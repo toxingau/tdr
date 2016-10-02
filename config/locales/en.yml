@@ -21,3 +21,7 @@
 
 en:
   hello: "Hello world"
+  theform: "The form contains"
+  user_fails: "User not found"
+  save_change: "Save Change"
+  update_profile: "Edit Profile"
