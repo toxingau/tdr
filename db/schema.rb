@@ -10,7 +10,72 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160928142026) do
+ActiveRecord::Schema.define(version: 20161002025855) do
+
+  create_table "activities", force: :cascade do |t|
+    t.integer  "action_type"
+    t.integer  "target_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_activities_on_user_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.text     "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "review_id"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_comments_on_review_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer  "activity_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["activity_id"], name: "index_likes_on_activity_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.text     "name"
+    t.text     "introduction"
+    t.float    "rating"
+    t.integer  "category_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["category_id"], name: "index_locations_on_category_id"
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["followed_id"], name: "index_relationships_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "location_id"
+    t.integer  "user_id"
+    t.text     "content"
+    t.integer  "rate"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["location_id"], name: "index_reviews_on_location_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
