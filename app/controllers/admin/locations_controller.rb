@@ -19,6 +19,24 @@ class Admin::LocationsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if @location.update_attibutes location_params
+      flash[:success] = t :locationupdated
+      redirect_to admin_locations_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @location.destroy
+    flash[:danger] = t :destroyed
+    redirect_to admin_locations_path
+  end
+
   private
   def location_params
     params.require(:location).permit :name, :introduction, :category_id,

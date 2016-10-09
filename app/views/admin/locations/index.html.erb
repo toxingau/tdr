@@ -7,6 +7,9 @@
       <%= location.name %>
       <%= location.rating %>
       <%= location.introduction %>
+      <%= link_to t(:delete), [:admin, location], 
+        method: :delete, data: {confirm: t(:areyousure)} %>
+      <%= link_to t(:editlocation), edit_admin_location_path(location) %>
     </li>
   <% end %>
   <%= will_paginate %>
