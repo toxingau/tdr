@@ -1,0 +1,16 @@
+<li id="location-<%= location.id %>">
+  <span class="title"><%= location.name %></span>
+  <span class="location-info">
+    <%= image_tag location.picture.url if location.picture? %>
+    <%= t :name %>
+    <%= location.name %>
+    <%= t :introduction %>
+    <%= location.introduction %>
+  </span>
+  <span class="timestamp">
+  <div>
+    <%= t :posted %>
+    <%= time_ago_in_words location.created_at %>
+  </div>
+  </span>
+</li>

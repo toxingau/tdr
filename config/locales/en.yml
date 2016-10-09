@@ -11,4 +11,7 @@ en:
   editlocation: "Edit Locations"
   areyousure: "Are You Sure? Delete Location?"
   delete: "Delete"
-  
+  name: "Name"
+  introduction: "Introduction"
+  posted: "Posted"
+  picturesize: "should be less than 5MB"

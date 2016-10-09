@@ -1,0 +1,8 @@
+<% provide :title, t(:alllocation) %>
+<h1><%= t :alllocation %></h1>
+ 
+<%= will_paginate %>
+<ul class="locations">
+   <%= render @locations %>
+</ul>
+<%= will_paginate %>
