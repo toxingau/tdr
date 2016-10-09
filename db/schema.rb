@@ -49,10 +49,11 @@ ActiveRecord::Schema.define(version: 20161002025855) do
   create_table "locations", force: :cascade do |t|
     t.text     "name"
     t.text     "introduction"
-    t.float    "rating"
+    t.integer  "rating",       default: 0
     t.integer  "category_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "picture"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.index ["category_id"], name: "index_locations_on_category_id"
   end
 
@@ -79,11 +80,11 @@ ActiveRecord::Schema.define(version: 20161002025855) do
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
-    t.boolean  "is_admin",               default: false
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
+    t.integer  "role",                   default: 0
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
     t.string   "provider"
     t.string   "uid"
     t.string   "reset_password_token"

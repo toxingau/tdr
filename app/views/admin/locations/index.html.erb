@@ -1,0 +1,13 @@
+<% provide :title, t("alllocations") %>
+<h1><%= t :alllocations %></h1>
+<div class="row">
+  <% @locations.each do |location| %>
+    <li id="location-<%= location.id %>">
+      <%= image_tag location.picture.url if location.picture? %>
+      <%= location.name %>
+      <%= location.rating %>
+      <%= location.introduction %>
+    </li>
+  <% end %>
+  <%= will_paginate %>
+</div>

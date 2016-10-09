@@ -3,4 +3,10 @@ Rails.application.routes.draw do
   root "static_pages#home"
 
   resources :users
+  resources :locations, only: [:index, :show]
+  namespace :admin do
+    root "static_pages#home"
+    resources :locations
+  end
+
 end
