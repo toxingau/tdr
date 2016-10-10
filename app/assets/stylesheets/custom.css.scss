@@ -33,6 +33,10 @@ input:focus{
   outline: none;
 }
 
+body {
+    padding-top: 90px;
+}
+
 /*======================================================
 				HEADER CSS
 ======================================================*/
@@ -310,7 +314,6 @@ input:focus{
 ======================================================*/
 
 .login-bg {
-  padding-top: 6em;
   height: 100%;
 //   background-image: image-url('loginbg.jpg');
   -moz-background-size: cover;
@@ -320,7 +323,6 @@ input:focus{
 }
 
 .registration-bg {
-  padding-top: 6em;
   height: 100%;
 //   background-image: image-url('regbackg.jpg');
   -moz-background-size: cover;
