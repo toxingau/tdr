@@ -23,7 +23,7 @@ class Admin::LocationsController < ApplicationController
   end
 
   def update
-    if @location.update_attibutes location_params
+    if @location.update_attributes location_params
       flash[:success] = t :locationupdated
       redirect_to admin_locations_path
     else
