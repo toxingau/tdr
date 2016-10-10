@@ -13,4 +13,7 @@ class Admin::UsersController < ApplicationController
     end
     redirect_to admin_users_path
   end
+
+  def show
+  end
 end

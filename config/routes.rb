@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   namespace :admin do
     root "static_pages#home"
     resources :locations
-    resources :users, only: [:index, :destroy]
+    resources :users, only: [:index, :destroy, :show]
   end
 end

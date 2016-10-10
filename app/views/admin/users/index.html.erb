@@ -10,11 +10,13 @@
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <td><%= user.email %></td>
+          <td><%= link_to user.email, admin_user_path(user) %></td>
           <td>
+          <% if !user.admin? %>
             <%= link_to t("button.delete"), admin_user_path(user),
             method: :delete, data: {confirm: "Are you sure?"},
             class: "btn btn-danger" %>
+          <% end %>
           </td>
         </tr>
       <% end %>

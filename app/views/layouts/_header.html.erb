@@ -12,25 +12,38 @@
           <div id="icon_menu" class="hidden-lg hidden-md"></div>
           <div id="menu">
               <ul class="mainmenu">
-                  <li><a href="#">Trang chủ</a></li>
+                <% if user_signed_in? && current_user.admin? %>
                   <li class="has-child">
-                    <a href="#">Giới thiệu</a>
+                    <a href="#">Locations</a>
                     <ul class="child">
-                      <li><a href=""> Our Mission</a></li>
-                      <li><a href=""> Core Values</a></li>
-                      <li><a href=""> Our Products</a></li>
+                      <li><%= link_to "All Locations", admin_locations_path %></li>
+                      <li><%= link_to "New Location", new_admin_location_path %></li>
                     </ul>
                   </li>
-                  <li><a href="#">Dịch vụ</a></li>
-                  
-                <% if user_signed_in? %>
+                  <li><%= link_to "All Users", admin_users_path %></li>
                   <li class="has-child">
                     <a href="#">
                       <%= t "account" %> <b class="caret"></b>
                     </a>
                     <ul class="child">
-                      <li><%= link_to "profile", "#" %></li>
-                      <li><%= link_to "edit", edit_user_path(current_user) %></li>
+                      <li><%= link_to "Profile", "#" %></li>
+                      <li><%= link_to "Edit", edit_user_path(current_user) %></li>
+                    </ul>
+                  </li>
+                  <li class="lt-child">
+                    <%= link_to destroy_user_session_path, method: :delete, class: "btn btn-danger" do %>
+                      <i class="fa fa-sign-out" aria-hidden="true"></i>Logout
+                    <% end %>
+                  </li>
+
+                  <% elsif user_signed_in? %>
+                  <li class="has-child">
+                    <a href="#">
+                      <%= t "account" %> <b class="caret"></b>
+                    </a>
+                    <ul class="child">
+                      <li><%= link_to "Profile", "#" %></li>
+                      <li><%= link_to "Edit", edit_user_path(current_user) %></li>
                     </ul>
                   </li>
                   <li class="lt-child">
