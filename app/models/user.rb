@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  mount_uploader :avatar, AvatarUploader
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
@@ -16,13 +17,16 @@ class User < ApplicationRecord
   has_many :following, through: :active_relationships,  source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
 
+  validates_integrity_of :avatar
+  validates_processing_of :avatar
+
   enum role:{user: 0, admin: 1}
   
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
-      #user.name = auth.info.name   # assuming the user model has a name
+      user.name = auth.info.name   # assuming the user model has a name
       #user.image = auth.info.image # assuming the user model has an image
     end
   end
