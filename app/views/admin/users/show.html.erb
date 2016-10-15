@@ -1,3 +1,12 @@
-<div class="col-md-4">
-  <h1><%= @user.email %></h1>
+<div class="col-md-4 text-center">
+  <div class="row">
+    <%= cl_image_tag @user.avatar_url :thumbnail %>
+    <h3><%= @user.name %></h3>
+    <h3><%= @user.email %></h3>
+  </div>
+</div>
+<div class="col-md-8">
+  <div class="row">
+    <h2>Activities</h2>
+  </div>
 </div>

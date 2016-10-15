@@ -1,16 +1,32 @@
 <% provide :title, t("alllocations") %>
 <h1><%= t :alllocations %></h1>
-<div class="row">
-  <% @locations.each do |location| %>
-    <li id="location-<%= location.id %>">
-      <%= image_tag location.picture.url if location.picture? %>
-      <%= location.name %>
-      <%= location.rating %>
-      <%= location.introduction %>
-      <%= link_to t(:delete), [:admin, location], 
-        method: :delete, data: {confirm: t(:areyousure)} %>
-      <%= link_to t(:editlocation), edit_admin_location_path(location) %>
-    </li>
-  <% end %>
-  <%= will_paginate %>
+<div class="col-sm-6 col-sm-offset-3">
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Rating</th>
+          <th>Introduction</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @locations.each do |location| %>
+          <tr>
+            <td><%= link_to location.name, admin_location_path(location) %></td>
+            <td><%= location.rating %></td>
+            <td><%= location.introduction %></td>
+            <td><%= link_to t(:delete), [:admin, location],
+              method: :delete, data: {confirm: t(:areyousure)},
+              class: "btn btn-danger" %>
+            <%= link_to t(:editlocation), edit_admin_location_path(location),
+              class: "btn btn-primary" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= will_paginate %>
+  </div>
 </div>

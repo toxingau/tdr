@@ -1,0 +1,6 @@
+<div class="col-sm-4">
+  <%= cl_image_tag @location.picture_url :thumbnail if @location.picture? %>
+</div>
+<div class="col-sm-8">
+  <h2><%= @location.name %></h2>
+</div>
