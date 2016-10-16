@@ -15,3 +15,6 @@ en:
   introduction: "Introduction"
   posted: "Posted"
   picturesize: "should be less than 5MB"
+  submit: "Submit"
+  addreview: "Add review"
+  timetype: "%d-%m-%y %H:%M"
