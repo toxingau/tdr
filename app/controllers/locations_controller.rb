@@ -5,5 +5,6 @@ class LocationsController < ApplicationController
 
   def show
     @location = Location.find_by_id params[:id]
+    @review = Review.new
   end
 end
