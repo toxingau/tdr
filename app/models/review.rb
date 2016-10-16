@@ -1,6 +1,7 @@
 class Review < ApplicationRecord
   belongs_to :location
   belongs_to :user
+  default_scope -> { order(created_at: :desc) }
 
   has_many :comments, dependent: :destroy
 
