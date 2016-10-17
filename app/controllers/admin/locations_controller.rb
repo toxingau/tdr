@@ -5,6 +5,9 @@ class Admin::LocationsController < ApplicationController
     @locations = Location.paginate page: params[:page]
   end
 
+  def show
+  end
+
   def new
     @location = Location.new
   end
