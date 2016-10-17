@@ -18,3 +18,5 @@ en:
   submit: "Submit"
   addreview: "Add review"
   timetype: "%d-%m-%y %H:%M"
+  addcomment: "Add your comment"
+  reviews: "Reviews"

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users
   resources :locations, only: [:index, :show]
   resources :reviews, only: [:create, :destroy]
+  resources :comments, only: [:create, :destroy]
   namespace :admin do
     root "static_pages#home"
     resources :locations

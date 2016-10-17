@@ -8,6 +8,7 @@ class Ability
     else
       can :read, :all
       can :manage, Review, user_id: user.id
+      can :manage, Comment, user_id: user.id
     end
   end
 end

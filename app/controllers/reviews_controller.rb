@@ -3,6 +3,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = current_user.reviews.build review_params
+    @comment = Comment.new
     if @review.save
       flash[:success] = t :success
       redirect_to @review.location
@@ -17,7 +18,7 @@ class ReviewsController < ApplicationController
     @location = @review.location
     @review.destroy
     flash[:danger] = t :destroyed
-    redirect_to locations_path
+    redirect_to root_url
   end
 
   private
