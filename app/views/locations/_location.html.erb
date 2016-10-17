@@ -13,7 +13,7 @@
   <%= time_ago_in_words location.created_at %>
 </span>
 <div id="reviews_<%= location.id %>">
-  <%= render location.reviews, location: book if location.reviews.any? %>
+  <%= render location.reviews, location: location if location.reviews.any? %>
 </div>
 <div class="review">
   <%= render "shared/review_form", location: location if logger? %>
