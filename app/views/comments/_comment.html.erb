@@ -6,4 +6,8 @@
       <br/>
       <h6><%= comment.created_at.strftime t(:timetype) %></h6>
   </div>
+  <div class="col-md-1">
+    <%= link_to t(:delete), comment, method: :delete,
+      remote: true if current_user == comment.user %>
+  </div>
 </div>

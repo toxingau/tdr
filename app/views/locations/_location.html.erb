@@ -12,14 +12,21 @@
   <%= t :posted %>
   <%= location.created_at.strftime t(:timetype) %>
 </span>
-<% if logger? %>
+<span class="location-rating" id="location_rating">
+  <% if location.rating > 0.0 %>
+    <%= t :rating %>
+    <%= location.rating %>
+  <% end %>
+</span>
+
+<% if user_signed_in? %>
   <div id="review_count">
     <%= location.reviews.count %>
     <%= t :reviews %>
   </div>
-  <div class="review">
+  <section class="review">
     <%= render "shared/review_form", location: location %>
-  </div>
+  </section> >
   <div id="reviews_<%= location.id %>">
     <%= render location.reviews, location: location if location.reviews.any? %>
   </div>
