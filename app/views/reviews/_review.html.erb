@@ -5,7 +5,6 @@
         <b><%= link_to review.user.name, review.user %></b>
         <%= review.content %>
         <br/>
-        <%= review.rate if review.rate.present? %>
         <h6><%= review.created_at.strftime t(:timetype) %></h6>
       </div>
     </div>  

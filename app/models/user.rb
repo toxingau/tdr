@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  ratyrate_rater
+  
   mount_uploader :avatar, AvatarUploader
 
   devise :database_authenticatable, :registerable,
