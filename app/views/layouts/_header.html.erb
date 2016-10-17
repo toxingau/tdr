@@ -13,6 +13,7 @@
           <div id="menu">
               <ul class="mainmenu">
                 <% if user_signed_in? && current_user.admin? %>
+                  <li><%= link_to "Categories", admin_categories_path %></li>
                   <li class="has-child">
                     <a href="#">Locations</a>
                     <ul class="child">
@@ -57,7 +58,7 @@
                       <i class="fa fa-sign-in" aria-hidden="true"></i>Login
                     <% end %>
                     <%= link_to "Signup", new_user_registration_path, class: "btn btn-info" %>
-                    
+
                   <!--  <a class="btn btn-primary" data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal();"> Login</a>-->
 		                <!--<a class="btn btn-primary" data-toggle="modal" href="javascript:void(0)" onclick="openRegisterModal();"> Sigup</a>-->
                   </li>
@@ -66,7 +67,7 @@
           </div>
       </nav>
     </div>
-  </div> 
+  </div>
 </header>
 <!-- ./HEADER -->
 
@@ -91,18 +92,18 @@
   var lastScrollTop = 0;
   var delta = 5;
   var navbarHeight = $('#header').outerHeight();
-  
+
   $(window).scroll(function(event){
     didScroll = true;
   });
-  
+
   setInterval(function() {
     if (didScroll) {
         hasScrolled();
         didScroll = false;
     }
   }, 250);
-  
+
   function hasScrolled() {
     var st = $(this).scrollTop();
       // Make sure they scroll more than delta
@@ -119,7 +120,7 @@
     }
     lastScrollTop = st;
   };
-  
 
-		
+
+
 </script>
