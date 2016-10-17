@@ -1,0 +1,9 @@
+<div class="row" id="comment_<%= comment.id %>">
+  <div class="col-md-9">
+    <div class="col-md-11">
+      <b><%= link_to comment.user.name, comment.user %></b>
+      <%= comment.content %>
+      <br/>
+      <h6><%= comment.created_at.strftime t(:timetype) %></h6>
+  </div>
+</div>

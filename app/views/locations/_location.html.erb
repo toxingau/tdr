@@ -10,11 +10,17 @@
 </span>
 <span class="timestamp">
   <%= t :posted %>
-  <%= time_ago_in_words location.created_at %>
+  <%= location.created_at.strftime t(:timetype) %>
 </span>
-<div id="reviews_<%= location.id %>">
-  <%= render location.reviews, location: location if location.reviews.any? %>
-</div>
-<div class="review">
-  <%= render "shared/review_form", location: location if logger? %>
-</div>
+<% if logger? %>
+  <div id="review_count">
+    <%= location.reviews.count %>
+    <%= t :reviews %>
+  </div>
+  <div class="review">
+    <%= render "shared/review_form", location: location %>
+  </div>
+  <div id="reviews_<%= location.id %>">
+    <%= render location.reviews, location: location if location.reviews.any? %>
+  </div>
+<% end %>
