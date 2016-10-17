@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find_by_id params[:id]
     @comment.destroy
     flash[:danger] = t :destroyed
-    redirect_to root_url
+    redirect_to @comment.review.location
   end
 
   private

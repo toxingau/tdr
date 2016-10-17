@@ -49,11 +49,11 @@ ActiveRecord::Schema.define(version: 20161002025855) do
   create_table "locations", force: :cascade do |t|
     t.text     "name"
     t.text     "introduction"
-    t.integer  "rating",       default: 0
+    t.float    "rating",       default: 0.0
     t.integer  "category_id"
     t.string   "picture"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["category_id"], name: "index_locations_on_category_id"
   end
 

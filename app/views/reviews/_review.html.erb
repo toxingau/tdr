@@ -5,8 +5,12 @@
         <b><%= link_to review.user.name, review.user %></b>
         <%= review.content %>
         <br/>
-        <%= review.rate if review.rate.present? %>
+        Rate: <%= review.rate if review.rate.present? %>
         <h6><%= review.created_at.strftime t(:timetype) %></h6>
+      </div>      
+      <div class="col-md-1">
+        <%= link_to t(:delete), review, method: :delete,
+          remote: true if current_user == review.user %>
       </div>
     </div>  
   </div>
@@ -18,3 +22,4 @@
     <%= render "shared/comment_form", review: review %>
   </div>
 </div>
+  

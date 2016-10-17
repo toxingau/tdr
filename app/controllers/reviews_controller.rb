@@ -21,7 +21,7 @@ class ReviewsController < ApplicationController
     @review.destroy
     update_rate @location if @review.rate.present?
     flash[:danger] = t :destroyed
-    redirect_to root_url
+    redirect_to @review.location
   end
 
   private
