@@ -20,6 +20,9 @@
 </span>
 
 <% if user_signed_in? %>
+  <div id="rate-form">
+    <%= rating_for location, "service", star: 5, enable_half: true %>
+  </div>
   <div id="review_count">
     <%= location.reviews.count %>
     <%= t :reviews %>

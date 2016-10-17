@@ -15,9 +15,10 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
-
-
 // Slider JS
+//= require jquery.raty
+//= require ratyrate
+
 jQuery(document).ready(function ($) {
     
     var jssor_1_SlideoTransitions = [

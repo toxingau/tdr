@@ -4,8 +4,7 @@ class CreateReviews < ActiveRecord::Migration[5.0]
       t.references :location, index: true, foreign_key: true
       t.references :user, index: true, foreign_key: true
       t.text :content
-      t.integer :rate
-
+      
       t.timestamps null: false
     end
     add_index :reviews, [:user_id, :created_at]
