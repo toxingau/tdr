@@ -111,6 +111,7 @@ ActiveRecord::Schema.define(version: 20161017065061) do
     t.integer  "location_id"
     t.integer  "user_id"
     t.text     "content"
+    t.integer  "rate"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["location_id"], name: "index_reviews_on_location_id"
