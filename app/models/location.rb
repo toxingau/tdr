@@ -4,6 +4,7 @@ class Location < ApplicationRecord
   belongs_to :category
 
   has_many :reviews, dependent: :destroy
+  has_many :images, dependent: :destroy
 
   mount_uploader :picture, PictureUploader
 
