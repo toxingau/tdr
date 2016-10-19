@@ -14,20 +14,57 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require turbolinks
-//= require_tree .
-// Slider JS
+//= require_tree
 //= require jquery.raty
 //= require ratyrate
 
-jQuery(document).ready(function ($) {
+$(document).ready(function(e) {
+    new WOW().init();
     
+    // JS Top travel
+    body = $( document.body );
+    var fvn = function(){};
+    fvn.prototype.init = function() {
+        this.owlClient = jQuery(".owl-client");
+        this.bindEvents();
+    };
+    fvn.prototype.bindEvents = function() {
+        this.bindCarousel();
+    };
+    fvn.prototype.bindCarousel = function() {
+        var self = this;
+
+        // owl carousle Client
+        self.owlClient.each(function() {
+            jQuery(this).owlCarousel({
+                singleItem: false,
+                items: 4,
+                itemsDesktop: [1400,6],
+                itemsTablet: [799,4],
+                itemsTabletSmall: [768,3],
+                itemsMobile: [480,2],
+                pagination: true,
+                navigation: false,
+                navigationText: false,
+                autoPlay: true,
+                slideSpeed: 100,
+                paginationSpeed: 400
+            });
+        });
+    };
+    var appObj = new fvn();
+    appObj.init();
+    // end
+});
+
+jQuery(document).ready(function ($) {
+    // Slider JS
     var jssor_1_SlideoTransitions = [
       [{b:-1,d:1,o:-1},{b:0,d:1000,o:1}],
       [{b:1900,d:2000,x:-379,e:{x:7}}],
       [{b:1900,d:2000,x:-379,e:{x:7}}],
       [{b:-1,d:1,o:-1,r:288,sX:9,sY:9},{b:1000,d:900,x:-1400,y:-660,o:1,r:-288,sX:-9,sY:-9,e:{r:6}},{b:1900,d:1600,x:-200,o:-1,e:{x:16}}]
     ];
-
 
     var jssor_1_options = {
       $AutoPlay: true,
@@ -45,7 +82,6 @@ jQuery(document).ready(function ($) {
     };
     
     var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
-    
     //responsive code begin
     //you can remove responsive code if you don't want the slider scales while window resizing
     function ScaleSlider() {
@@ -62,5 +98,4 @@ jQuery(document).ready(function ($) {
     $(window).bind("load", ScaleSlider);
     $(window).bind("resize", ScaleSlider);
     $(window).bind("orientationchange", ScaleSlider);
-    //responsive code end
 });
