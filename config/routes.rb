@@ -12,5 +12,6 @@ Rails.application.routes.draw do
     resources :locations
     resources :users, only: [:index, :destroy, :show]
     resources :categories
+    resources :images, only: [:new, :create]
   end
 end
