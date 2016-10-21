@@ -8,7 +8,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave
 
   version :thumbnail do
-    resize_to_fit(500, 500)
+    resize_to_fill(400, 300)
   end
 
   # Choose what kind of storage to use for this uploader:
