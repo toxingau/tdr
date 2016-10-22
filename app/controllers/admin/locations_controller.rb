@@ -2,7 +2,8 @@ class Admin::LocationsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @locations = Location.paginate page: params[:page]
+    @search = Location.search(params[:q])
+    @locations = @search.result
   end
 
   def show

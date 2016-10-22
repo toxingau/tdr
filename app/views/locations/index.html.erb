@@ -1,8 +1,15 @@
 <% provide :title, t(:alllocation) %>
 <h1><%= t :alllocation %></h1>
- 
-<%= will_paginate %>
 
+<div class="col-sm-6 col-sm-offset-3">
+  <%= search_form_for @search, class: "form-inline" do |f| %>
+    <div class="form-group">
+        <%= f.label :name_cont, 'Location Name:' %>
+        <%= f.text_field :name_cont, class: "form-control" %><br>
+    </div>
+    <%= f.submit 'Search', class: "btn btn-default" %>
+<% end %>
+</div>
 <table class="table table-hover">
   <thead>
     <tr>
@@ -26,7 +33,7 @@
             </td>
             <td class="clickable-row" data-href="<%= location_path location %>">
               <%= location.category.name %>
-            </td>         
+            </td>
             <td class="clickable-row" data-href="<%= location_path location %>">
               <%= location.rating %>
             </td>
@@ -40,4 +47,3 @@
         <% end %>
       </tbody>
 
-<%= will_paginate %>

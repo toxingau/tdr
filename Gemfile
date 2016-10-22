@@ -24,7 +24,7 @@ gem 'fog', '1.36.0'
 gem 'cloudinary'
 gem 'config'
 gem "ratyrate"
-
+gem "ransack", :git => "git://github.com/ernie/ransack.git"
 
 group :development, :test do
   gem 'byebug', platform: :mri

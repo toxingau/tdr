@@ -5,7 +5,15 @@
     <%= link_to t(:newcategory), new_admin_category_path, class: "btn btn-primary" %>
   </div>
 </div>
-
+<div class="col-sm-6 col-sm-offset-3">
+  <%= search_form_for [:admin, @search], class: "form-inline" do |f| %>
+    <div class="form-group">
+        <%= f.label :name_cont, 'Category Name:' %>
+        <%= f.text_field :name_cont, class: "form-control" %><br>
+    </div>
+    <%= f.submit 'Search', class: "btn btn-default" %>
+<% end %>
+</div>
 <% if can? :manage, @users %>
 <div class="col-sm-6 col-sm-offset-3">
   <div class="row">
