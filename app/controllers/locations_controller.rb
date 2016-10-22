@@ -1,6 +1,7 @@
 class LocationsController < ApplicationController
   def index
-    @locations = Location.order(rating: :desc).paginate page: params[:page]
+    @search = Location.search(params[:q])
+    @locations = @search.result
   end
 
   def show

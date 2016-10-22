@@ -2,7 +2,8 @@ class Admin::CategoriesController < ApplicationController
   before_action :find_category, only: [:show, :destroy]
 
   def index
-    @categories = Category.paginate page: params[:page]
+    @search = Category.search(params[:q])
+    @categories = @search.result
   end
 
   def show
