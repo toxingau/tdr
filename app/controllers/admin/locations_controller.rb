@@ -4,6 +4,7 @@ class Admin::LocationsController < ApplicationController
   def index
     @search = Location.search(params[:q])
     @locations = @search.result
+    @search.build_condition
   end
 
   def show
@@ -17,7 +18,7 @@ class Admin::LocationsController < ApplicationController
     @location = Location.new location_params
     if @location.save
       flash[:success] = t :success
-      redirect_to admin_locations_path
+      redirect_to admin_category_path @location.category
     else
       render :new
     end

@@ -4,6 +4,7 @@ class LocationsController < ApplicationController
   def index
     @search = Location.search(params[:q])
     @locations = @search.result
+    @search.build_condition
   end
 
   def show
