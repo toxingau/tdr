@@ -1,21 +1,29 @@
 <% provide :title, t(:all_categories) %>
 <h1><%= t :all_categories %></h1>
-<%= link_to t(:create), new_admin_category_path, class: "btn btn-primary" %>
-  <table class="table">
+<div class="col-lg-4 col-lg-offset-5">
+  <div class="center form-group">
+    <%= link_to t(:newcategory), new_admin_category_path, class: "btn btn-primary" %>
+  </div>
+</div>
+
+<% if can? :manage, @users %>
+<div class="col-sm-6 col-sm-offset-3">
+  <div class="row">
+    <table class="table table-striped">
     <thead>
       <th><%= t "category.name" %></th>
       <th><%= t "category.created_at" %></th>
       <th><%= t "category_id.update_at" %></th>
-      <th class="action" width="150">Action</th>
+      <th>Action</th>
     </thead>
     <tbody>
       <% @categories.each do |category| %>
         <tr>
-          <td><%= link_to category.name, admin_category_path(category) %></td>
-          <td><%= category.created_at.strftime t(:time_type) %></td>
-          <td><%= category.updated_at.strftime t(:time_type) %></td>
+          <td ><%= link_to category.name, admin_category_path(category) %></td>
+          <td><%= category.created_at.strftime t "time_format" %></td>
+          <td><%= category.updated_at.strftime t "time_format" %></td>
           <td class="dn-action-padding">
-            <%= link_to t(:edit), "#",
+            <%= link_to t(:edit), edit_admin_category_path(category),
               class: "btn btn-primary" %>
             <%= link_to t(:delete), [:admin, category], method: :delete,
               data: {confirm: t(:sure)}, class: "btn btn-danger btn-primary" %>
@@ -24,3 +32,4 @@
       <% end %>
     </tbody>
   </table>
+<% end %>

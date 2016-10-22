@@ -2,27 +2,42 @@
 <h1><%= t :alllocation %></h1>
  
 <%= will_paginate %>
-<ul class="locations">
-  <% @locations.each do |location| %>
-    <li id="location-<%= location.id %>">
-      <span class="title">
-        <%= link_to location.name, location %>
-      </span>
-      <span class="location-info">
-        <%= image_tag location.picture.url if location.picture? %>
-        <%= t :name %>
-        <%= location.name %>
-        <%= t :introduction %>
-        <%= location.introduction %>
-      </span>
-      <span class="timestamp">
-        <%= t :posted %>
-        <%= time_ago_in_words location.created_at %>
-      </span>
-      <div>
-        <%= link_to t(:addreview), location if user_signed_in? %>
-      </div>
-    </li>
-  <%end%>
-</ul>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Rating</th>
+      <th>Introduction</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+        <% @locations.each do |location| %>
+          <tr>
+            <td class="clickable-row" data-href="<%= location_path location %>">
+              <%= image_tag location.picture.url, alt: t("locationalt"), class:
+                "img-responsive img-thumbnail", width: 300, height: 200 %>
+            </td>
+            <td class="clickable-row" data-href="<%= location_path location %>">
+              <%= link_to location.name, location_path(location) %>
+            </td>
+            <td class="clickable-row" data-href="<%= location_path location %>">
+              <%= location.category.name %>
+            </td>         
+            <td class="clickable-row" data-href="<%= location_path location %>">
+              <%= location.rating %>
+            </td>
+            <td class="clickable-row" data-href="<%= location_path location %>">
+              <%= location.introduction %>
+            </td>
+            <td class="clickable-row" data-href="<%= location_path location %>">
+              <%= link_to t(:Review), location_path(location), class: "btn btn-primary" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+
 <%= will_paginate %>

@@ -1,19 +1,27 @@
-<div id="review_<%= review.id %>">
+<div id="review_<%= review.id %>" class="well well-lg review-hover">
   <div class="row" >
-    <div class="col-md-9">
-      <div class="col-md-11">
+    <div class="col-md-9" >
+      <div>
         <b><%= link_to review.user.name, review.user %></b>
         <%= review.content %>
         <br/>
-        <h6><%= review.created_at.strftime t(:timetype) %></h6>
+        <h6>Reviewed about ⚬ <%= review.created_at.strftime t(:timetype) %></h6>
       </div>
     </div>  
   </div>
   <div class="clearfix"></div>
   <div id="comment_<%= review.id %>">
-    <%= render review.comments, review: review if review.comments.any? %>
+    <div class= "col-md-9 col-md-offset-0">
+      <%= render review.comments, review: review if review.comments.any? %>
+    </div>
   </div>
   <div class="comment-form">
-    <%= render "shared/comment_form", review: review %>
+      <%= render "shared/comment_form", review: review %>
+  </div>
+  <div class="pull-right">
+    <div class="col-md-1">
+      <%= link_to t(:delete), review, method: :delete,
+      remote: true if current_user == review.user %>
+    </div>    
   </div>
 </div>
