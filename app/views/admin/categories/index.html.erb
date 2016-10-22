@@ -19,7 +19,7 @@
   <div class="row">
     <table class="table table-striped">
     <thead>
-      <th><%= t "category.name" %></th>
+      <th><%= sort_link(@search, :name, "Name") %></th>
       <th><%= t "category.created_at" %></th>
       <th><%= t "category_id.update_at" %></th>
       <th>Action</th>

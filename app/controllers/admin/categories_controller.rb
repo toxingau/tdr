@@ -1,12 +1,17 @@
 class Admin::CategoriesController < ApplicationController
-  before_action :find_category, only: [:show, :destroy]
+  before_action :find_category, only: [:show, :destroy, :edit, :update]
 
   def index
     @search = Category.search(params[:q])
-    @categories = @search.result
+    @categories = @search.result.page params[:page]
   end
 
   def show
+    @search = @category.locations.search params[:q]
+    @locations = @search.result.page params[:page ]
+  end
+
+  def edit
   end
 
   def new
@@ -25,6 +30,15 @@ class Admin::CategoriesController < ApplicationController
 
   def destroy
     @category.destroy
+    redirect_to admin_categories_path
+  end
+
+  def update
+    if @category.update category_params
+      flash[:success] = t "categories.update"
+    else
+      flash[:danger] = t "flash.fail"
+    end
     redirect_to admin_categories_path
   end
 

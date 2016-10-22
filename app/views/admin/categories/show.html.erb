@@ -1,2 +1,37 @@
-<% provide :title, t(:category) %>
-<h1><%= @category.name %></h1>
+<% provide :title, @category.name %>
+<div class="col-sm-3">
+  <h1><%= @category.name %></h1>
+  <small><%= t "categories.number" %> : <%= @category.locations.count %></small>
+  <br>
+  <%= link_to t("newlocation"), new_admin_location_path, class: "btn btn-success" %>
+</div>
+<div class="col-sm-9">
+  <h3><%= t "location.list" %></h3>
+
+  <table class="table table striped">
+    <thead>
+      <tr>
+        <th><%= sort_link(@search, :name, "Location") %></th>
+        <th><%= t "category.created_at" %></th>
+        <th><%= t "category_id.update_at" %></th>
+        <th><%= t "location.action" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @locations.each do |location| %>
+        <tr>
+          <td><%= link_to location.name, admin_location_path(location) %></td>
+          <td><%= location.created_at.strftime t "time_format" %></td>
+          <td><%= location.updated_at.strftime t "time_format" %></td>
+          <td>
+            <%= link_to t("button.edit"), edit_admin_location_path(location),
+              class: "btn btn-success" %>
+            <%= link_to t("button.delete"), admin_location_path(location),
+              method: :delete, data: {confirm: t("flash.confirm")},
+              class: "btn btn-danger" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

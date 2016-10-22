@@ -1,7 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-html {  
+html {
   height: 100%;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -104,7 +104,7 @@ body {
     transition: all 0.5s ease;
 }
 #header #menu {
-    margin-top: 8px;    
+    margin-top: 8px;
     float: right;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -388,7 +388,7 @@ body {
 }
 
 .forgot {
-    margin-top: 10px;   
+    margin-top: 10px;
 }
 .forgot .forgot-pass {
     font-size: 15px;
@@ -545,7 +545,7 @@ body {
     height: 20px;
     vertical-align: middle;
 }
- 
+
 .jssorb05 div, .jssorb05 div:hover, .jssorb05 .av {
     cursor: pointer;
     display: inline-block;
@@ -587,11 +587,11 @@ body {
     display: block;
     position: relative;
     margin: 0 auto;
-    top: 0px; 
-    left: 0px; 
-    width: 1900px; 
-    height: 900px; 
-    overflow: hidden; 
+    top: 0px;
+    left: 0px;
+    width: 1900px;
+    height: 900px;
+    overflow: hidden;
     visibility: hidden;
 }
 
@@ -599,12 +599,12 @@ body {
         visibility: visible;
 
     display: block;
-    cursor: default; 
-    position: relative; 
-    top: 0px; 
-    left: 0px; 
-    width: 1900px; 
-    height: 900px; 
+    cursor: default;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    width: 1900px;
+    height: 900px;
     overflow: hidden;
 }
 
@@ -633,8 +633,8 @@ body {
 }
 .block-title .title {
     text-align: left;
-    color: #0094da; 
-    font-weight: bold; 
+    color: #0094da;
+    font-weight: bold;
     margin-bottom: 40px;
 }
 .block-title .title:after {
@@ -648,7 +648,7 @@ body {
 .block-title .name-title {
     text-align: right;
     color: #0094da;
-    padding-right: 10px; 
+    padding-right: 10px;
     font-size: 20px;
 }
 .block-title .name-title span {
@@ -709,7 +709,7 @@ body {
 }
 .card {
     text-shadow: 0 1px 10px rgba(0, 0, 0, 0.5);
-}   
+}
 .card:hover{
     opacity: 0.6;
 }
@@ -782,6 +782,13 @@ h4{
 #top-travel .item .card .header {
     height: 200px;
 }
+#top-travel .card h4 {
+    font-size: 20px;
+    line-height: 15px;
+}
+#top-travel .card .description {
+    font-size: 14px;
+}
 
 #new-travel {
     background: #fff;
@@ -795,7 +802,7 @@ h4{
 }
 #new-travel .card .category {
     padding: 0;
-} 
+}
 #new-travel .card .title {
     color: #333333;
 }
@@ -821,6 +828,7 @@ h4{
     margin-right: 15px;
     font-size: 24px;
 }
+
 /*======================================================
                 END
 ======================================================*/
@@ -842,4 +850,3 @@ h4{
 .btn {
   margin-top: 10px;
 }
-

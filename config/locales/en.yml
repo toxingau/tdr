@@ -43,3 +43,13 @@ en:
     nothing: "There is no activity"
   ago: "ago"
   you: "You"
+  categories:
+    update: "Category update success!"
+    edit: "Edit"
+    number: "Number of location"
+  flash:
+    fail: "Update fail!"
+  location:
+    list: "List Location"
+    location: "Location"
+    action: "Action"
