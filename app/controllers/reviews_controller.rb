@@ -19,7 +19,7 @@ class ReviewsController < ApplicationController
     @location = @review.location
     @review.destroy
     flash[:danger] = t :destroyed
-    redirect_to root_url
+    redirect_to @review.location
   end
 
   private

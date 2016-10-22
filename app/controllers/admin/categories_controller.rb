@@ -6,7 +6,6 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def show
-
   end
 
   def new

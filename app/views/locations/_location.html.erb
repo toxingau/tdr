@@ -1,36 +1,46 @@
-<span class="title">
-  <%= link_to location.name, location %>
-</span>
-<span class="location-info">
-  <%= image_tag location.picture.url if location.picture? %>
-  <%= t :name %>
-  <%= location.name %>
-  <%= t :introduction %>
-  <%= location.introduction %>
-</span>
-<span class="timestamp">
-  <%= t :posted %>
-  <%= location.created_at.strftime t(:timetype) %>
-</span>
-<span class="location-rating" id="location_rating">
-  <% if location.rating > 0.0 %>
-    <%= t :rating %>
-    <%= location.rating %>
-  <% end %>
-</span>
+<% provide :title, @location.name %>
 
-<% if user_signed_in? %>
-  <div id="rate-form">
-    <%= rating_for location, "service", star: 5, enable_half: true %>
+<div class="row margin-bottom">
+  <div class="col-md-6">
+    <%= image_tag @location.picture.url, alt: t("locationalt"), class:
+    "img-responsive img-thumbnail", width: 700,
+    height: 700 %>
+  </div>  
+
+  <div class="col-md-6">
+    <div id="location-<%= location.id %>">
+      <h3><%= @location.name %></h3>
+      <h4 class="category">
+        <%= t "category" %>
+        <%= @location.category.name %>
+      </h4>
+      <h4 class="rate">
+        <%= t "rating" %>
+        <%= @location.rating %>
+      </h4>
+      <h4 class="introduction">
+        <%= t :introduction %> 
+        <%= @location.introduction %>
+      </h4>
+      <% if user_signed_in? %>
+        <h4 class="rate-form">
+          <%= t "rate" %> 
+          <%= rating_for @location, "service", star: 5, enable_half: true %>
+        </h4>
+    </div>
+    <section class="review">
+      <%= render "shared/review_form", location: @location %>
+    </section>
+    <% end %>
   </div>
   <div id="review_count">
-    <%= location.reviews.count %>
+    <%= @location.reviews.count %>
     <%= t :reviews %>
-  </div>
-  <section class="review">
-    <%= render "shared/review_form", location: location %>
-  </section> >
+  </div> 
+</div>
+<div class ="col-md-7"> 
   <div id="reviews_<%= location.id %>">
-    <%= render location.reviews, location: location if location.reviews.any? %>
+    <%= render location.reviews, location: @location if location.reviews.any? %>
   </div>
-<% end %>
+</div>
+
