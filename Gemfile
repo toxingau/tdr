@@ -25,6 +25,8 @@ gem 'cloudinary'
 gem 'config'
 gem "ratyrate"
 gem "ransack", :git => "git://github.com/ernie/ransack.git"
+gem "faker"
+gem 'jquery-turbolinks'
 
 group :development, :test do
   gem 'byebug', platform: :mri

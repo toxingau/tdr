@@ -350,7 +350,7 @@ body {
 
 .panel {
   border-radius: 8px;
-  margin-top: 100px;
+//  margin-top: 100px;
 }
 
 .panel-heading{
@@ -821,3 +821,25 @@ h4{
     margin-right: 15px;
     font-size: 24px;
 }
+/*======================================================
+                END
+======================================================*/
+
+/*======================================================
+                Hung Css
+======================================================*/
+#location-show {
+  img {
+    margin-bottom: 5px;
+  }
+  .container {
+    width: 100%;
+  }
+  .content-section-a {
+    background-color: #f8f8f8;
+  }
+}
+.btn {
+  margin-top: 10px;
+}
+

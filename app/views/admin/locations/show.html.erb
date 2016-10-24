@@ -1,6 +1,53 @@
-<div class="col-sm-4">
-  <%= cl_image_tag @location.picture_url :thumbnail if @location.picture? %>
-</div>
-<div class="col-sm-8">
-  <h2><%= @location.name %></h2>
+<div id="location-show">
+  <div class="page-header text-center">
+    <h1><%= @location.name %></h1>
+  </div>
+  <div class="content-section-a container">
+    <div class="row">
+      <div class="text-center">
+        <h2>Introduction</h2>
+        <h3><%= @location.introduction %></h3>
+      </div>
+    </div>
+  </div>
+  <div class="content-section-b container">
+    <h2>Picture</h2>
+    <div id="slider-thumb">
+      <ul>
+        <% @location.images.each do |image| %>
+          <li class="col-sm-4 img-responsive">
+            <a class="thumbnail" id="carousel-selector-<%= image.id %>">
+              <%= cl_image_tag image.img_url(:thumbnail)%>
+            </a>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-xs-12" id="slider">
+      <div class="row">
+        <div class="col-sm-12" id="myCarousel">
+          <div class="carousel-inner">
+            <div class="active item" data-slide-number="0">
+              <%= cl_image_tag @location.picture_url :thumbnail %>
+            </div>
+            <% @location.images.each do |image| %>
+              <div class="item" data-slide-number="<%= image.id %>">
+                <%= cl_image_tag image.img_url %>
+              </div>
+            <% end %>            
+          </div>
+          <a class="left carousel-control" href="#myCarousel"
+            role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+          </a>
+          <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="content-section-a container">
+    <h2>Review</h2>
+  </div>
 </div>

@@ -11,14 +11,15 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap
-//= require turbolinks
 //= require_tree
 //= require jquery.raty
 //= require ratyrate
+//= require turbolinks
 
-$(document).ready(function(e) {
+$(document).on('turbolinks:load', function(e) {
     new WOW().init();
     
     // JS Top travel
@@ -57,7 +58,7 @@ $(document).ready(function(e) {
     // end
 });
 
-jQuery(document).ready(function ($) {
+jQuery(document).on('turbolinks:load', function ($) {
     // Slider JS
     var jssor_1_SlideoTransitions = [
       [{b:-1,d:1,o:-1},{b:0,d:1000,o:1}],
