@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  acts_as_voter
+
   ratyrate_rater
   
   mount_uploader :avatar, AvatarUploader

@@ -1,22 +1,33 @@
 class CommentsController < ApplicationController
-  load_and_authorize_resource only: [:create, :destroy]
+  load_and_authorize_resource
 
   def create
     @comment = current_user.comments.build comment_params
     if @comment.save
-      flash[:success] = t :success
-      redirect_to @comment.review.location
+        redirect_to @comment.review
     else
       flash[:alert] = t :error
       redirect_to :back
     end
   end
 
+
   def destroy
-    @comment = Comment.find_by_id params[:id]
     @comment.destroy
     flash[:danger] = t :destroyed
-    redirect_to @comment.review.location
+    redirect_to @comment.review
+    end    
+  end
+
+  def edit
+  end
+
+  def update
+    if @comment.update_attributes comment_params
+      flash[:success] = t :commentupdated
+    else
+      render :edit
+    end
   end
 
   private

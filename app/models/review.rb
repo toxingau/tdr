@@ -1,4 +1,6 @@
 class Review < ApplicationRecord
+  acts_as_votable
+  
   belongs_to :location
   belongs_to :user
   default_scope -> { order(created_at: :desc) }

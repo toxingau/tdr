@@ -1,0 +1,7 @@
+<% if @comment.save %>
+  $("#error_messages").html("");
+  $("#comment_<%= @comment.id %>").html("<%= j render "comments/comment", comment: @comment %>");
+  $("#comment-form").show();
+<% else %>
+  $("#error_messages").append("<%= j render "shared/error_messages", object: @comment %>");
+<% end %>
