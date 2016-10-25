@@ -1,7 +1,3 @@
-class Activity < ApplicationRecord
+class Activity < ActiveRecord::Base
   belongs_to :user
-
-  has_many :likes, dependent: :destroy
-
-  enum action_type: ["like", "favorite", "follow", "review", "comment"]
 end

@@ -1,4 +1,4 @@
-<h3 class="col-md-6 col-md-offset-3">All Users</h3>
+<h3 class="text-center">All Users</h3>
 <div class="col-sm-6 col-sm-offset-3">
   <%= search_form_for [:admin, @search], class: "form-inline" do |f| %>
     <div class="form-group">
@@ -8,29 +8,38 @@
     <%= f.submit 'Search', class: "btn btn-default" %>
   <% end %>
 </div>
-<div class="col-md-6 col-md-offset-3">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @users.each do |user| %>
+<div class="container-fluid">
+  <div class="col-md-8">
+    <table class="table table-bordered table-striped">
+      <thead>
         <tr>
-          <td><%= link_to user.name, admin_user_path(user) %></td>
-          <td><%= user.email %></td>
-          <td>
-          <% if !user.admin? %>
-            <%= link_to t("button.delete"), admin_user_path(user),
-            method: :delete, data: {confirm: "Are you sure?"},
-            class: "btn btn-danger" %>
-          <% end %>
-          </td>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Action</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= link_to user.name, admin_user_path(user) %></td>
+            <td><%= user.email %></td>
+            <td>
+            <% unless user.admin? %>
+              <%= link_to t("button.delete"), admin_user_path(user),
+              method: :delete, data: {confirm: "Are you sure?"},
+              class: "btn btn-danger" %>
+            <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-4 text-center">
+    <h2>Activities</h2>
+      <ul class="list-group">
+        <%= @activities.blank? ? t("activities.nothing") 
+          : render_activities(@activities) %>
+      </ul>
+  </div>
 </div>

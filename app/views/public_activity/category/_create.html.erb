@@ -1,0 +1,9 @@
+<li>
+  <% if a.trackable %>
+    <%= render "shared/activity_owner", a: a %> created category
+    <%= link_to a.trackable.name, admin_category_path(a.trackable) %>
+    <%= time_ago_in_words activity.created_at %> <%= t :ago %>
+  <% else %>
+    A category that is currently deleted was added.
+  <% end %>
+</li>

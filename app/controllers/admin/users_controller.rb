@@ -4,6 +4,7 @@ class Admin::UsersController < ApplicationController
   def index
     @search = User.search(params[:q])
     @users = @search.result
+    @activities = PublicActivity::Activity.all.order(created_at: :desc)
   end
 
   def destroy
@@ -16,5 +17,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def show
+    @activities = PublicActivity::Activity.order(created_at: :desc)
+      .where(owner_id: @user.id, owner_type: "User")
   end
 end

@@ -28,6 +28,7 @@ gem "ransack", :git => "git://github.com/ernie/ransack.git"
 gem "faker"
 gem 'jquery-turbolinks'
 gem "like_dislike"
+gem "public_activity"
 
 group :development, :test do
   gem 'byebug', platform: :mri
