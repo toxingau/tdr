@@ -1,12 +1,9 @@
 class ReviewsController < ApplicationController
-  load_and_authorize_resource only: [:create, :destroy]
+  load_and_authorize_resource
 
   def create
     @review = current_user.reviews.build review_params
-    @location = @review.location
-    @comment = Comment.new
     if @review.save
-      flash[:success] = t :success
       redirect_to @review.location
     else
       flash[:alert] = t :error
@@ -14,9 +11,22 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def show
+    @comment = Comment.new
+  end
+
+  def edit
+  end
+
+  def update
+    @review.update_attributes review_params
+    respond_to do |format|
+      format.html {redirect_to @review.location}
+      format.js
+    end
+  end
+
   def destroy
-    @review = current_user.reviews.find_by_id params[:id]
-    @location = @review.location
     @review.destroy
     flash[:danger] = t :destroyed
     redirect_to @review.location

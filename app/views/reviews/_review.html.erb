@@ -1,8 +1,9 @@
-<div id="review_<%= review.id %>" class="well well-lg review-hover">
+<div id="review_<%= review.id %>" class=" col-md- 10 col-md-offset-1 well well-lg review-hover">
   <div class="row" >
     <div class="col-md-9" >
       <div>
         <b><%= link_to review.user.name, review.user %></b>
+        </br>
         <%= review.content %>
         <br/>
         <h6>Reviewed about ⚬ <%= review.created_at.strftime t(:timetype) %></h6>
@@ -15,13 +16,27 @@
       <%= render review.comments, review: review if review.comments.any? %>
     </div>
   </div>
-  <div class="comment-form">
-      <%= render "shared/comment_form", review: review %>
-  </div>
   <div class="pull-right">
-    <div class="col-md-1">
-      <%= link_to t(:delete), review, method: :delete,
-      remote: true if current_user == review.user %>
-    </div>    
+    <span class="votes">
+      <%= render "reviews/votes", review: review %>
+    </span>
+
+    <% if can? :manage, review %>
+      <small>
+        <%= link_to edit_review_path(review), review: review, 
+          remote: true do %>
+          <i class="glyphicon glyphicon-edit"></i>&nbsp;
+          <%= t "edit" %>
+        <% end %>
+
+        <%= link_to review, method: :delete, data: {confirm: t("confirm_rv")},
+         remote: true do %>
+          <i class="glyphicon glyphicon-remove"></i>&nbsp;
+          <%= t "delete" %>
+        <% end %>
+      </small>
+    <% end %>    
   </div>
+  <%= link_to t("comment_rv"), review_path(review),
+    class: "btn btn-primary btn-sm" %>
 </div>
