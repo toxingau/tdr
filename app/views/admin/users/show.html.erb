@@ -20,6 +20,9 @@
     <div class="col-md-8">
       <div class="row">
         <h2>Activities</h2>
+          <ul class="list-group">
+            <%= @activities.blank? ? t("activities.nothing") : render_activities(@activities) %>
+          </ul>
       </div>
     </div>
   </div>

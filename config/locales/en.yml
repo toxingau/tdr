@@ -11,7 +11,7 @@ en:
   save: "Save"
   success: "Success"
   failure: "Fail"
-  editlocation: " _Edit_ "
+  editlocation: " Edit "
   areyousure: "Are You Sure? Delete Location?"
   confirm_rv: "Are you sure? Delete Review?"
   delete: "Delete"
@@ -39,3 +39,7 @@ en:
   submitcomment: "Comment"
   comments: "Comments"
   comment_rv: "Comment Review"
+  activities:
+    nothing: "There is no activity"
+  ago: "ago"
+  you: "You"
