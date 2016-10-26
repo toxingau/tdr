@@ -22,4 +22,9 @@ class ApplicationController < ActionController::Base
         :current_password, :avatar, :avatar_cache, :remove_avatar
     end
   end
+
+  def current_ability
+    namespace = controller_path.split("/").first
+    Ability.new current_user, namespace
+  end
 end
