@@ -1,4 +1,4 @@
-<h3 class="text-center">All Users</h3>
+<h3 class="col-md-6 col-md-offset-3">All Users</h3>
 <div class="col-sm-6 col-sm-offset-3">
   <%= search_form_for [:admin, @search], class: "form-inline" do |f| %>
     <div class="form-group">
@@ -38,7 +38,7 @@
   <div class="col-md-4 text-center">
     <h2>Activities</h2>
       <ul class="list-group">
-        <%= @activities.blank? ? t("activities.nothing") 
+        <%= @activities.blank? ? t("activities.nothing")
           : render_activities(@activities) %>
       </ul>
   </div>

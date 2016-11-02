@@ -21,7 +21,7 @@
 
 $(document).on('turbolinks:load', function(e) {
     new WOW().init();
-    
+
     // JS Top travel
     body = $( document.body );
     var fvn = function(){};
@@ -39,8 +39,8 @@ $(document).on('turbolinks:load', function(e) {
         self.owlClient.each(function() {
             jQuery(this).owlCarousel({
                 singleItem: false,
-                items: 4,
-                itemsDesktop: [1400,6],
+                items: 5,
+                itemsDesktop: [1400,4],
                 itemsTablet: [799,4],
                 itemsTabletSmall: [768,3],
                 itemsMobile: [480,2],
@@ -81,7 +81,7 @@ jQuery(document).on('turbolinks:load', function ($) {
         $Orientation: 1,
       }
     };
-    
+
     var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
     //responsive code begin
     //you can remove responsive code if you don't want the slider scales while window resizing

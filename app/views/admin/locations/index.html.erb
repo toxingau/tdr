@@ -21,7 +21,7 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>Name</th>
+          <th><%= sort_link(@search, :name, "Name") %></th>
           <th>Category</th>
           <th>Rating</th>
           <th>Introduction</th>
@@ -32,7 +32,7 @@
         <% @locations.each do |location| %>
           <tr>
             <td><%= link_to location.name, admin_location_path(location) %></td>
-            <td><%= location.category.name %></td>
+            <td><%= link_to location.category.name, admin_category_path(location.category) %></td>
             <td><%= location.rating %></td>
             <td><%= location.introduction %></td>
             <td><%= link_to t(:delete), [:admin, location],
