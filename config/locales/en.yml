@@ -14,6 +14,7 @@ en:
   editlocation: " Edit "
   areyousure: "Are You Sure? Delete Location?"
   confirm_rv: "Are you sure? Delete Review?"
+  confirm_cm: "Are you sure? Delete Comment?"
   delete: "Delete"
   name: "Name"
   introduction: "Introduction: "
@@ -47,6 +48,7 @@ en:
     update: "Category update success!"
     edit: "Edit"
     number: "Number of location"
+    locations: "Locations"
   flash:
     fail: "Update fail!"
   location:

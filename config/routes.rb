@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :reviews
   resources :comments
   resources :votes, only: [:create, :destroy]
+  resources :categories, only: :show
   namespace :admin do
     root "static_pages#home"
     resources :locations

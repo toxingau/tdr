@@ -1,0 +1,15 @@
+<% provide :title, @category.name %>
+<div class="col-md-4 col-md-offset-2">
+  <h1><%= @category.name %></h1>
+  <div class="col-md-offset-6">
+    <%= pluralize @category.locations.count, t("categories.locations") %>
+  </div>
+</div>
+
+<div class="locations">
+  <% if @locations.any? %>
+    <% @locations.each do |location| %>
+      <%= render "shared/show_location", location: location %>
+    <% end %>
+  <% end %>
+</div>

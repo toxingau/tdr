@@ -33,11 +33,7 @@
     </section>
     <% end %>
   </div>
-  <div id="review_count">
-    <%= @location.reviews.count %>
-    <%= t :reviews %>
-  </div> 
-</div>
+</div> 
 <div class ="col-md-9"> 
   <div id="reviews_<%= location.id %>">
     <%= render location.reviews, location: @location if location.reviews.any? %>
