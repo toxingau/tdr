@@ -3,13 +3,14 @@
 
 <div class="col-sm-6 col-sm-offset-3">
   <%= search_form_for @search, class: "form-inline" do |f| %>
-    <div class="form-group">
-        <%= f.label :name_cont, 'Location Name:' %>
-        <%= f.text_field :name_cont, class: "form-control" %><br>
-    </div>
-    <%= f.submit 'Search', class: "btn btn-default" %>
+    <%= f.condition_fields do |c| %>
+      <%= render "condition_fields", f: c%>
+    <% end %>
+    <p><%= link_to_add_fields "Add Conditions", f, :condition %>
+    <div class="actions"><%= f.submit "Search" %></div>
 <% end %>
 </div>
+
 <table class="table table-hover">
   <thead>
     <tr>
