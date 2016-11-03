@@ -43,4 +43,7 @@
     <%= render location.reviews, location: @location if location.reviews.any? %>
   </div>
 </div>
+<div>
+  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=1450x300&sensor=false&zoom=16&markers=#{@location.latitude}%2C#{@location.longitude}" %>
+</div>
 
