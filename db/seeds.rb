@@ -22,6 +22,7 @@ end
   category_id = Faker::Number.between(1, 10)
   introduction = Faker::Hipster.sentence
   picture = File.open(File.join(Rails.root, "/app/assets/images/seed_image.jpg"))
-  Location.create! name: name, category_id: category_id, introduction: introduction, picture: picture
+  Location.create! name: name, category_id: category_id,
+    introduction: introduction, picture: picture, address: name
 end
 PublicActivity.enabled = true
