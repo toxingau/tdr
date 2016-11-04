@@ -9,6 +9,7 @@ class Ability
       can :read, :all
       can :manage, Review, user_id: user.id
       can :manage, Comment, user_id: user.id
+      can :read, Category, user_id: user.id
     end
   end
 end

@@ -1,0 +1,35 @@
+<div class="row blog-post post-list col-md-8 col-md-offset-1">
+  <div class="thumbnail box-top">
+    <div class="row clickable-row" data-href="<%= location_path location %>">
+      <div class="col-md-5">
+        <%= image_tag location.picture.url, alt: t("locationalt"), class:
+        "img-responsive img-thumbnail", width: 300, height: 200 %>
+      </div>
+      <div class="caption col-md-7">
+        <div class="item-info">
+          <h3 class="clickable-row" data-href="<%= location_path location %>">
+            <%= link_to location.name, location_path(location) %>
+          </h3>
+          <h6>Systems created about ⚬ <%= location.created_at.strftime t(:timetype) %></h6>
+          <h4 class="clickable-row" data-href="<%= location_path location %>">
+            <%= location.introduction %>
+          </h4>
+          <span class="col-md-offset-9">
+            <td class="clickable-row" data-href="<%= location_path location %>">
+              <%= link_to t(:Review), location_path(location), class: "btn btn-primary" %>
+            </td>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="mini-post-list col-md-offset-0">
+      <td class="clickable-row" data-href="<%= location_path location %>"> Rating: 
+        <%= location.rating %>
+      </td> ⚬
+      <span id="review_count">
+        <%= location.reviews.count %>
+        <%= t :reviews %>
+      </span>
+    </div>
+  </div>
+</div>

@@ -1,14 +1,25 @@
-<div class="row" id="comment_<%= comment.id %>">
-  <div class="col-md-9">
-    <div class="col-md-11">
-      <b><%= link_to comment.user.name, comment.user %></b>
-      <%= comment.content %>
-      <br/>
-      <h6>Commented about ⚬ <%= comment.created_at.strftime t(:timetype) %></h6>
+<div id="comment_<%= comment.id %>">
+  <div class="col-md-9 col-md-offset-0 well well-lg review-hover">
+    <b><%= link_to comment.user.name, comment.user %></b>
+    <%= comment.content %>
+    <br/>
+    <h6>Commented about ⚬ <%= comment.created_at.strftime t(:timetype) %></h6>
+    <div class="pull-right">
+      <% if can? :manage, comment %>
+        <small>
+          <%= link_to edit_comment_path(comment), comment: comment, 
+            remote: true do %>
+            <i class="glyphicon glyphicon-edit"></i>&nbsp;
+            <%= t "edit" %>
+          <% end %>
+
+          <%= link_to comment, method: :delete, data: {confirm: t("confirm_cm")},
+           remote: true do %>
+            <i class="glyphicon glyphicon-remove"></i>&nbsp;
+            <%= t "delete" %>
+          <% end %>
+        </small>
+      <% end %>    
     </div>
-  </div>
-  <div class="col-md-1">
-    <%= link_to t(:delete), comment, method: :delete,
-      remote: true if current_user == comment.user %>
   </div>
 </div>

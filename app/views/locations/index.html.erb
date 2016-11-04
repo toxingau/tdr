@@ -1,50 +1,82 @@
 <% provide :title, t(:alllocation) %>
-<h1><%= t :alllocation %></h1>
 
-<div class="col-sm-6 col-sm-offset-3">
-  <%= search_form_for @search, class: "form-inline" do |f| %>
-    <%= f.condition_fields do |c| %>
-      <%= render "condition_fields", f: c%>
-    <% end %>
-    <p><%= link_to_add_fields "Add Conditions", f, :condition %>
-    <div class="actions"><%= f.submit "Search" %></div>
-<% end %>
-</div>
-
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Image</th>
-      <th>Name</th>
-      <th>Category</th>
-      <th>Rating</th>
-      <th>Introduction</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <tbody>
-        <% @locations.each do |location| %>
-          <tr>
-            <td class="clickable-row" data-href="<%= location_path location %>">
-              <%= image_tag location.picture.url, alt: t("locationalt"), class:
-                "img-responsive img-thumbnail", width: 300, height: 200 %>
-            </td>
-            <td class="clickable-row" data-href="<%= location_path location %>">
-              <%= link_to location.name, location_path(location) %>
-            </td>
-            <td class="clickable-row" data-href="<%= location_path location %>">
-              <%= location.category.name %>
-            </td>
-            <td class="clickable-row" data-href="<%= location_path location %>">
-              <%= location.rating %>
-            </td>
-            <td class="clickable-row" data-href="<%= location_path location %>">
-              <%= location.introduction %>
-            </td>
-            <td class="clickable-row" data-href="<%= location_path location %>">
-              <%= link_to t(:Review), location_path(location), class: "btn btn-primary" %>
-            </td>
-          </tr>
+<div id="wrapper">
+  <div id="container" class="container">
+    <div class="post-detail all-post row">
+      <%= search_form_for @search, class: "form-inline" do |f| %>
+        <%= f.condition_fields do |c| %>
+          <%= render "condition_fields", f: c%>
         <% end %>
-      </tbody>
-
+        <p><%= link_to_add_fields "Add Conditions", f, :condition %>
+        <div class="actions"><%= f.submit "Search" %></div>
+      <% end %>
+      <div class="col-md-9 col-lg-9 post-left"> 
+        <div class="box-title box-title-child">
+          <div class="col-sm-6 col-sm-offset-3">
+          <div class="clearfix"></div>
+          <ul class="list-title" id="posts_tablist">
+            <span role="presentation"> ⚬
+              <%= link_to t(:post), "#" %>              
+            </span>  ⚬
+            <span role="presentation">
+                <%= link_to t(:review), "#" %>
+            </span> ⚬
+            <span role="presentation">
+                <%= link_to t(:Suggestion), "#" %>
+            </span> ⚬
+            <span role="presentation">
+                <%= link_to t(:TopLocation), "#" %>
+            </span> ⚬
+            <span role="presentation">
+                <%= link_to t(:Helpful), "#" %>
+            </span> ⚬
+          </ul>
+        </div>
+        
+        <div class="row blog-post post-list">
+          <% @locations.each do |location| %>
+            <div class="thumbnail box-top">
+              <div class="row clickable-row" data-href="<%= location_path location %>">
+                <div class="col-md-5">
+                  <%= image_tag location.picture.url, alt: t("locationalt"), class:
+                  "img-responsive img-thumbnail", width: 300, height: 200 %>
+                </div>
+                <div class="caption col-md-7">
+                  <div class="item-info">
+                    <h3 class="clickable-row" data-href="<%= location_path location %>">
+                      <%= link_to location.name, location_path(location) %>
+                    </h3>
+                    <h6>Systems created about ⚬ <%= location.created_at.strftime t(:timetype) %></h6>
+                    <h4 class="clickable-row" data-href="<%= location_path location %>">
+                      <%= location.introduction %>
+                    </h4>
+                    <% if user_signed_in? %>
+                      <td class="button" data-href="<%= location_path location %>">
+                        <%= link_to location.category.name, category_path(location.category), class: "btn btn-warning" %>
+                      </td>
+                      <span class="col-md-offset-7">
+                        <td class="clickable-row" data-href="<%= location_path location %>">
+                          <%= link_to t(:Review), location_path(location), class: "btn btn-primary" %>
+                        </td>
+                      </span>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+              <div class="mini-post-list col-md-offset-0">
+                <td class="clickable-row" data-href="<%= location_path location %>">
+                  <i class="glyphicon glyphicon-heart-empty"></i>&nbsp;
+                  <%= location.rating %>
+                </td> ⚬
+                <span id="review_count">
+                  <i class="glyphicon glyphicon-pencil"></i>&nbsp;
+                  <%= location.reviews.count %>
+                </span>
+              </div>
+            </div>
+          <% end %>
+        </div>  
+      </div>
+    </div>    
+  </div>
+</div>

@@ -9,15 +9,15 @@
       <%= pluralize @review.comments.count, t("comments") %>
     </div>
     </br>
-
+    <% if user_signed_in? %>
+      <div class="comment-form" id="comment-form">
+        <%= render "shared/comment_form", review: @review %>
+      </div>
+    <% end %>
     <div id="error_messages"></div>
 
     <div id="comment_<%= @review.id %>">
       <%= render @review.comments, review: @review if @review.comments.any? %>
-    </div>
-
-    <div class="comment-form" id="comment-form">
-      <%= render "shared/comment_form", review: @review %>
     </div>
   </div>
 </div>
