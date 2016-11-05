@@ -4,6 +4,8 @@ class Category < ApplicationRecord
 
   has_many :locations, dependent: :destroy
 
+  validates :name, length: {maximum: 150}, uniqueness: true
+  
   UNRANSACKABLE_ATTRIBUTES = ["id", "updated_at", "created_at", "category"]
 
   def self.ransackable_attributes auth_object = nil
