@@ -273,3 +273,35 @@
     </div>
 </section>
 <!-- New -->
+
+<script>
+    $(document).ready(function () {
+        var jssor_1_options = {
+          $AutoPlay: true,
+          $SlideDuration: 1000,
+          $SlideEasing: $Jease$.$OutQuint,
+          $BulletNavigatorOptions: {
+            $Class: $JssorBulletNavigator$,
+            $SpacingX: 35,
+            $Orientation: 1,
+          }
+        };
+    
+        var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
+        jssor_1_slider.$Play();
+        function ScaleSlider() {
+            var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
+            if (refSize) {
+                refSize = Math.min(refSize, 1920);
+                jssor_1_slider.$ScaleWidth(refSize);
+            }
+            else {
+                window.setTimeout(ScaleSlider, 30);
+            }
+        }
+        ScaleSlider();
+        $(window).bind("load", ScaleSlider);
+        $(window).bind("resize", ScaleSlider);
+        $(window).bind("orientationchange", ScaleSlider);
+    });
+</script>
