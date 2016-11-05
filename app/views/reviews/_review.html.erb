@@ -1,37 +1,46 @@
-<div id="review_<%= review.id %>" class=" col-md-10 col-md-offset-1 well well-lg review-hover">
-  <div class="row" >
-    <div class="col-md-9" >
-      <div>
-        <b><%= link_to review.user.name, review.user %></b>
-        </br>
-        <%= review.content %>
-        <br/>
-        <h6>Reviewed about ⚬ <%= review.created_at.strftime t(:timetype) %></h6>
+<div id="review_<%= review.id %>" class="comment-review">
+  <div class="row review-all">
+    <div class="col-md-11">
+      <div class="review-content">
+        <div class="review-name">
+          <%= link_to review.user.name, review.user %>
+          <span class="content"><%= review.content %></span>
+        </div>
+      </div>
+      <div class="review-votes">
+        <div class="votes">
+          <%= render "reviews/votes", review: review %>
+        </div>
+        <div class="review-created"><%= review.created_at.strftime t(:timetype) %></div>
       </div>
     </div>  
+    <div class="col-md-1">
+      <div class="pull-right">
+        <% if can? :manage, review %>
+          <div class="review-action">
+            <%= link_to edit_review_path(review), review: review, 
+              remote: true do %>
+              <i class="glyphicon glyphicon-edit"></i>&nbsp;
+            <% end %>
+    
+            <%= link_to review, method: :delete, data: {confirm: t("confirm_rv")},
+             remote: true do %>
+              <i class="glyphicon glyphicon-remove"></i>&nbsp;
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
   <div class="clearfix"></div>
-  
-  <div class="pull-right">
-    <span class="votes">
-      <%= render "reviews/votes", review: review %>
-    </span>
-    <% if can? :manage, review %>
-      <small>
-        <%= link_to edit_review_path(review), review: review, 
-          remote: true do %>
-          <i class="glyphicon glyphicon-edit"></i>&nbsp;
-          <%= t "edit" %>
-        <% end %>
-
-        <%= link_to review, method: :delete, data: {confirm: t("confirm_rv")},
-         remote: true do %>
-          <i class="glyphicon glyphicon-remove"></i>&nbsp;
-          <%= t "delete" %>
-        <% end %>
-      </small>
-    <% end %>    
+  <div id="comment_<%= review.id %>" class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="reply-review">
+        <%= render review.comments, review: review if review.comments.any? %>
+      </div>
+    </div>
   </div>
-  <%= link_to t("comment_rv"), review_path(review),
-    class: "btn btn-primary btn-sm" %>
+  <div style="margin: 5px;">
+    <%= link_to t("comment_rv"), review_path(review), class: "btn btn-primary btn-sm" %>
+  </div>
 </div>

@@ -35,6 +35,9 @@ a:hover {
 input:focus{
   outline: none;
 }
+textarea {
+    resize: none;
+}
 
 body {
   padding-top: 70px;
@@ -821,13 +824,64 @@ h4{
 /*======================================================
 				Profile Css
 ======================================================*/
-.profile {
-    height: 100%;
+.posts-wrapper {
+    // background-color: #fafafa;
+    // height: 100%;
+    margin-top: 30px;
 }
-.profile label {
-    margin-top: 25px;
-    margin-right: 15px;
-    font-size: 24px;
+.profile-header {
+  padding: 20px 0;
+}
+
+.profile-header img {
+  margin: 20px auto;
+  height: 200px;
+//   width: 200px;
+  border-radius: 50%;
+  display: block;
+  max-width: 100%;
+}
+
+.user-name-and-follow {
+  display: inline-block;
+  padding: 45px 0px 20px 0px;
+}
+.profile-header label {
+    font-size: 28px;
+    font-weight: 400;
+    color: #0094da;
+}
+.profile-header h3 {
+    color: #818488;
+    font-size: 30px;
+    font-weight: bold;
+}
+.profile-user-name {
+  display: inline;
+  margin: 10px;
+}
+
+.activity-header {
+  color: #0094da;
+    margin: 20px;
+    font-size: 45px;
+    line-height: 60px;
+    font-weight: 900;
+    padding-bottom: 15px;
+    text-transform: uppercase;
+    text-align: center;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.71);
+    position: relative;
+}
+.activity-header:before {
+    content: "";
+    width: 80px;
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -31.5px;
+    background: #0094da;
 }
 
 /*======================================================
@@ -947,6 +1001,178 @@ input[type=file] {
 #all-noti {
   padding: 0 5px;
 } 
+/*======================================================
+                END
+======================================================*/
+
+
+/*======================================================
+                Show Location Css
+======================================================*/
+.margin-top {
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
+
+.page-location .jssora22l, .page-location .jssora22r {
+    display: block;
+    position: absolute;
+    width: 40px;
+    height: 58px;
+    cursor: pointer;
+    overflow: hidden;
+    background: asset-data-url('sliders/ArrowNavigator.png');
+}
+.page-location .jssora22l { background-position: -10px -31px; }
+.page-location .jssora22r { background-position: -70px -31px; }
+.page-location .jssora22l:hover { background-position: -130px -31px; }
+.page-location .jssora22r:hover { background-position: -190px -31px; }
+
+.page-location .location {
+    margin-top: 10px;
+}
+.page-location .loca-name {
+    font-size: 35px;
+    font-weight: bold;
+    color: #0094da;
+    margin-bottom: 15px;
+}
+.page-location .loca-content {
+    color: #000;
+    font-size: 16px;
+    padding: 5px 5px;
+}
+.page-location .loca-content .title {
+    color: #000;
+    font-size: 18px;
+    margin-right: 10px;
+    font-weight: 600;
+    font-style: normal!important;
+}
+.page-location .map {
+    width: 100%;
+    height: 200px;
+    margin-top: 10px;
+    text-align: center;
+}
+.page-location .map img {
+    height: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.page-location .review {
+    position: relative;
+    width: 100%;
+    margin-top: 15px;
+    // height: 160px;
+}
+.review .form-review {
+    // position: absolute;
+    // bottom: 0px;
+    width: 100%;
+}
+.review .form-review textarea {
+    resize: none;
+}
+.review .form-review .btn {
+    margin-top: 35px;
+}
+.page-location .review-comment {
+    background-color: #f6f7f9;
+    border: 1px solid #e1e2e3;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+.comment-review {
+    padding: 5px;
+    background-color: #f6f7f9;
+    display: block;
+    position: relative;
+    // border-bottom: 1px solid #e1e2e3;
+}
+.comment-review:after {
+    content: '';
+    width: 90%;
+    height: 0;
+    border-bottom: 1px solid #e1e2e3;
+    position: absolute;
+    bottom: 0px;
+    left: 5%;
+}
+.comment-review .row {
+    margin: 0px;
+}
+.comment-review .col-md-11, .comment-review .col-md-1, .comment-review .col-md-10 {
+    padding-right: 0px;
+    padding-left: 5px;
+}
+.comment-review .review-content {
+    display: block;
+    padding: 5px;
+}
+.comment-review .review-name {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.5;
+    color: #337ab7;
+    // margin-right: 10px;
+    display: inline-block;
+}
+.comment-review .review-content .content {
+    // display: inline-block;
+    font-size: 14px;
+    color: #000;
+    font-weight: normal;
+    margin-left: 5px;
+}
+.comment-review .review-votes {
+    display: block;
+    margin: 0px 5px;
+}
+.comment-review .review-votes .votes {
+    display: inline-block;
+    font-size: 12px;
+    color: #337ab7;
+}
+.comment-review .review-votes .votes .glyphicon {
+    font-size: 12px;
+    margin-left: 5px;
+}
+.comment-review .review-votes .review-created {
+    display: inline-block;
+    font-size: 11px;
+    line-height: 1;
+    color: #90949c;
+    font-style: italic;
+    padding-left: 10px;
+}
+.comment-review .review-action {
+    display: none;
+    font-size: 12px;
+}
+.comment-review .review-action .glyphicon {
+    margin-left: 2px;
+    color: #337ab7;
+    opacity: 0.75;
+}
+.comment-review .review-action .glyphicon:hover {
+    opacity: 1;
+    color: #23527c;
+}
+.comment-review .review-all:hover .review-action {
+    display: block;
+}
+.comment-review .reply-review:after {
+    border-left: 2px solid #dddfe2;
+    content: '';
+    left: -2px;
+    position: absolute;
+    width: 0;
+    height: 100%;
+}
 /*======================================================
                 END
 ======================================================*/

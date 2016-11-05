@@ -57,46 +57,47 @@ $(document).on('turbolinks:load', function(e) {
     appObj.init();
     // end
 });
+// $(document).on('turbolinks:load', function () {
+//     var jssor_options = {
+//       $AutoPlay: true,
+//       $SlideDuration: 1000,
+//       $SlideEasing: $Jease$.$OutQuint,
+//       $BulletNavigatorOptions: {
+//         $Class: $JssorBulletNavigator$,
+//         $SpacingX: 35,
+//         $Orientation: 1,
+//       },
+//       $ArrowNavigatorOptions: {
+//         $Class: $JssorArrowNavigator$
+//       },
+//     };
 
-jQuery(document).on('turbolinks:load', function ($) {
-    // Slider JS
-    var jssor_1_SlideoTransitions = [
-      [{b:-1,d:1,o:-1},{b:0,d:1000,o:1}],
-      [{b:1900,d:2000,x:-379,e:{x:7}}],
-      [{b:1900,d:2000,x:-379,e:{x:7}}],
-      [{b:-1,d:1,o:-1,r:288,sX:9,sY:9},{b:1000,d:900,x:-1400,y:-660,o:1,r:-288,sX:-9,sY:-9,e:{r:6}},{b:1900,d:1600,x:-200,o:-1,e:{x:16}}]
-    ];
-
-    var jssor_1_options = {
-      $AutoPlay: true,
-      $SlideDuration: 1000,
-      $SlideEasing: $Jease$.$OutQuint,
-      $CaptionSliderOptions: {
-        $Class: $JssorCaptionSlideo$,
-        $Transitions: jssor_1_SlideoTransitions
-      },
-      $BulletNavigatorOptions: {
-        $Class: $JssorBulletNavigator$,
-        $SpacingX: 35,
-        $Orientation: 1,
-      }
-    };
-
-    var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
-    //responsive code begin
-    //you can remove responsive code if you don't want the slider scales while window resizing
-    function ScaleSlider() {
-        var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
-        if (refSize) {
-            refSize = Math.min(refSize, 1920);
-            jssor_1_slider.$ScaleWidth(refSize);
-        }
-        else {
-            window.setTimeout(ScaleSlider, 30);
-        }
-    }
-    ScaleSlider();
-    $(window).bind("load", ScaleSlider);
-    $(window).bind("resize", ScaleSlider);
-    $(window).bind("orientationchange", ScaleSlider);
-});
+//     var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_options);
+//     var loca_slider = new $JssorSlider$("loca-slider", jssor_options);
+//     function ScaleSlider() {
+//         var refSize = jssor_1_slider.$Elmt.parentNode.clientWidth;
+//         if (refSize) {
+//             refSize = Math.min(refSize, 1920);
+//             jssor_1_slider.$ScaleWidth(refSize);
+//             console.log(refSize);
+//         }
+//         else {
+//             window.setTimeout(ScaleSlider, 30);
+//         }
+        
+//         var parentSize = loca_slider.$Elmt.parentNode.clientWidth - 30;
+//         if (parentSize) {
+//             parentSize = Math.min(parentSize, 1920);
+//             loca_slider.$ScaleWidth(parentSize);
+//             console.log(parentSize);
+//         }
+//         else {
+//             window.setTimeout(ScaleSlider, 30);
+//         }
+//     }
+//     ScaleSlider();
+//     $(window).bind("load", ScaleSlider);
+//     $(window).bind("resize", ScaleSlider);
+//     $(window).bind("orientationchange", ScaleSlider);
+// });
+    

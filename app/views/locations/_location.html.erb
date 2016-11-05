@@ -1,45 +1,103 @@
 <% provide :title, @location.name %>
-
-<div class="row margin-bottom container">
-  <div class="col-md-6">
-    <%= image_tag @location.picture.url, alt: t("locationalt"), class:
-    "img-responsive img-thumbnail", width: 700,
-    height: 700 %>
-  </div>  
-
-  <div class="col-md-6">
-    <div id="location-<%= location.id %>">
-      <h3><%= @location.name %></h3>
-      <h4 class="category">
-        <%= t "category" %>
-        <%= @location.category.name %>
-      </h4>
-      <h4 class="rate">
-        <%= t "rating" %>
-        <%= @location.rating %>
-      </h4>
-      <h4 class="introduction">
-        <%= t :introduction %> 
-        <%= @location.introduction %>
-      </h4>
-      <% if user_signed_in? %>
-        <h4 class="rate-form">
-          <%= t "rate" %> 
-          <%= rating_for @location, "service", star: 5, enable_half: true %>
-        </h4>
+<div class="container page-location">
+  <div class="margin-top">
+    <div class="row">
+      <div class="col-md-7">
+        <div id="loca-slider" style="position: relative; width: 600px; height: 450px; overflow: hidden; visibility: hidden;">
+            <div data-u="slides" style="cursor: default; position: relative; width: 600px; height: 450px; overflow: hidden;">
+                <div data-p="225.00" style="display: none;">
+                    <%= image_tag @location.picture.url, alt: t("locationalt"), class: "img-responsive img-thumbnail" %>
+                </div>
+                <div data-p="225.00" style="display: none;">
+                    <%= image_tag @location.picture.url, alt: t("locationalt"), class: "img-responsive img-thumbnail" %>
+                </div>
+                <div data-p="225.00" style="display: none;">
+                    <%= image_tag "sliders/slider-01.jpg", alt: "logo", class: "img-responsive img-thumbnail" %>
+                </div>
+            </div>
+            <!-- Arrow Navigator -->
+            <span data-u="arrowleft" class="jssora22l" style="top:165px;left:10px;width:50px;height:80px;" data-autocenter="2"></span>
+            <span data-u="arrowright" class="jssora22r" style="top:165px;right:10px;width:50px;height:80px;" data-autocenter="2"></span>
+        </div>
+        
+      </div>  
+    
+      <div class="col-md-5">
+        <div id="location-<%= location.id %>" class="location">
+          <div class="loca-name"><%= @location.name %></div>
+          <div class="loca-content">
+            <span class="title">Category:</span>
+            <%= @location.category.name %>
+          </div>
+          <div class="loca-content">
+            <span class="title">Introduction:</span> 
+            <%= @location.introduction %>
+          </div>
+          <div class="loca-content" style="font-style: italic;">
+            <div class="row">
+              <div class="col-sm-6">
+                <span class="title">Rate:</span> <%= @location.rating %> 
+                <% if user_signed_in? %>
+                  <%= rating_for @location, "service", star: 5, enable_half: true %>
+                <% end %>
+              </div>
+              <div class="col-sm-6">
+                  <span class="title">Reviews:</span>
+                  <%= @location.reviews.count %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="map">
+          <%= image_tag "http://maps.google.com/maps/api/staticmap?size=1450x300&sensor=false&zoom=16&markers=#{@location.latitude}%2C#{@location.longitude}", class: "img-rounded" %>
+        </div>
+        <% if user_signed_in? %>
+          <div class="review">
+            <%= render "shared/review_form", location: @location %>
+          </div>
+        <% end %>
+      </div>
+       
     </div>
-    <section class="review">
-      <%= render "shared/review_form", location: @location %>
-    </section>
-    <% end %>
   </div>
-</div> 
-<div class ="col-md-9"> 
-  <div id="reviews_<%= location.id %>">
-    <%= render location.reviews, location: @location if location.reviews.any? %>
+  <div class ="row">
+    <div class="col-md-10 col-md-offset-1"> 
+      <div id="reviews_<%= location.id %>" class="review-comment">
+        <%= render location.reviews, location: @location if location.reviews.any? %>
+      </div>
+    </div>
   </div>
+  
 </div>
-<div>
-  <%= image_tag "http://maps.google.com/maps/api/staticmap?size=1450x300&sensor=false&zoom=16&markers=#{@location.latitude}%2C#{@location.longitude}" %>
-</div>
+
+<script>
+  $(document).ready(function () {
+      var jssor_options = {
+        $AutoPlay: true,
+        $SlideDuration: 1000,
+        $SlideEasing: $Jease$.$OutQuint,
+        $ArrowNavigatorOptions: {
+          $Class: $JssorArrowNavigator$
+        },
+      };
+  
+      var loca_slider = new $JssorSlider$("loca-slider", jssor_options);
+      loca_slider.$Play();
+      function ScaleSlider() {
+          var parentSize = loca_slider.$Elmt.parentNode.clientWidth - 30;
+          if (parentSize) {
+              parentSize = Math.min(parentSize, 1920);
+              loca_slider.$ScaleWidth(parentSize);
+          }
+          else {
+              window.setTimeout(ScaleSlider, 30);
+          }
+      }
+      ScaleSlider();
+      $(window).bind("load", ScaleSlider);
+      $(window).bind("resize", ScaleSlider);
+      $(window).bind("orientationchange", ScaleSlider);
+  });
+</script>
+
 
