@@ -3,7 +3,7 @@ class Location < ApplicationRecord
   tracked owner: ->controller, model{controller && controller.current_user}
 
   ratyrate_rateable "service"
-  
+
   belongs_to :category
 
   has_many :reviews, dependent: :destroy
@@ -19,6 +19,12 @@ class Location < ApplicationRecord
   validates :rating, presence: true,format: {with: /\A\d+(?:.\d{0,2})?\z/},
     numericality: {greater_than_or_equal_to: 0, less_than_or_equal_to: 5}
   validate  :picture_size
+
+  UNRANSACKABLE_ATTRIBUTES = ["id", "updated_at", "created_at", "introduction", "picture", "address", "latitude", "longitude"]
+
+  def self.ransackable_attributes auth_object = nil
+    (column_names - UNRANSACKABLE_ATTRIBUTES) + _ransackers.keys
+  end
 
   private
   def picture_size
