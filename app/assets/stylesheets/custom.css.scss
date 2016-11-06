@@ -917,6 +917,10 @@ input[type=file] {
   @include alert-variant($alert-danger-bg,
     $alert-danger-border, $alert-danger-text);
 }
+
+.field {
+  margin-bottom:20px;
+}
 /*======================================================
                 END
 ======================================================*/

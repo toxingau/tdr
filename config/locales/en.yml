@@ -40,6 +40,8 @@ en:
   submitcomment: "Comment"
   comments: "Comments"
   comment_rv: "Comment Review"
+  commentupdated: "Comment Updated"
+  destroyed: "Review Deleted"
   activities:
     nothing: "There is no activity"
   ago: "ago"
@@ -51,6 +53,7 @@ en:
     locations: "Locations"
   flash:
     fail: "Update fail!"
+    record_not_found: "Not found"
   location:
     list: "List Location"
     location: "Location"
