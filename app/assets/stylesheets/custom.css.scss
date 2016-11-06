@@ -795,11 +795,11 @@ h4{
 }
 
 #new-travel {
-    background: #fff;
+    background-color: #e9ebee;
     display: block;
 }
 #new-travel .block-title .name-title {
-    background: #fff;
+    background-color: #e9ebee;
 }
 #new-travel .card {
     text-shadow: none;
@@ -1176,6 +1176,190 @@ input[type=file] {
     position: absolute;
     width: 0;
     height: 100%;
+    top: 0;
+}
+/*======================================================
+                END
+======================================================*/
+
+/*======================================================
+                All Location Css
+======================================================*/
+#wrapper {
+    background: #f3f5f6;
+}
+#wrapper #container .row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+#wrapper #container .box-title {
+    margin-top: 20px;
+}
+#wrapper #container .box-title .presentation {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    padding-bottom: 20px;
+}
+#wrapper #container .box-title .box-top {
+    display: block;
+    margin-bottom: 30px;
+    background: #fff;
+    transition: box-shadow .2s;
+    border-radius: 4px;
+}
+#wrapper #container .box-title .box-top:hover {
+    box-shadow: 0 16px 32px 0 rgba(0,0,0,.1);
+}
+#wrapper .box-top .active-content {
+    padding: 0px;
+}
+#wrapper .box-top .active-content .attribution {
+    display: block;
+    width: 100%;
+    height: 75px;
+    padding: 16px;
+    vertical-align: middle;
+    position: relative;
+}
+#wrapper .box-top .active-content .attribution .content {
+    margin-top: 0;
+    float: left;
+    max-width: 70%;
+    display: inline-block;
+}
+#wrapper .box-top .active-content .attribution .content .name {
+    color: #337ab7;
+    font-weight: 600;
+    font-size: 25px;
+    display: block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    line-height: 1;
+}
+#wrapper .box-top .active-content .attribution .content .date {
+    color: #b3b3b3;
+    font-weight: 400;
+    font-size: 12px;
+}
+#wrapper .box-top .active-content .attribution .category {
+    float:right;
+    max-width: 30%;
+    display: inline-block;
+    padding: 0;
+}
+#wrapper .box-top .active-content .attribution .category .category-button {
+    // display: inline-block;
+    color: #343434;
+    background-color: #e1df19;
+    font-size: 17px;
+    font-weight: bold;
+    position: relative;
+    padding: 3px 5px 3px 7px;
+    box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.2);
+    // margin-left: 12px;
+}
+#wrapper .box-top .active-content .attribution .category .category-button:after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    border: solid transparent;
+    border-right-color: #e1df19;
+    border-width: 12px;
+    top: 0;
+    left: -23px;    
+}
+#wrapper .box-top .active-photo {
+    min-width: 100%;
+    overflow: hidden;
+    position: relative;
+    background-color: #fff;
+}
+#wrapper .box-top .active-photo img {
+    width: 100%;
+}
+#wrapper .box-top .active-content .introduction {
+    margin: 0;
+    width: 100%;
+    overflow: hidden;
+}
+#wrapper .box-top .active-content .introduction p {
+    height: 48px;
+    line-height: 48px;
+    padding-left: 16px;
+    padding-right: 16px;
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    color: #000;
+    font-size: 13px;
+    font-weight: 600;
+}
+#wrapper .box-top .active-content .active-action {
+    text-align: right;
+    height: 48px;
+    padding: 16px;
+    line-height: 16px;
+    border-top: 1px solid rgba(0,0,0,.15);
+}
+#wrapper .box-top .active-content .active-action .button-review {
+    float: left;
+}
+#wrapper .box-top .active-action .button-review .btn {
+    padding: 4px 8px;
+    font-size: 12px;
+    margin-top: -5px;
+    line-height: 1.4;
+}
+#wrapper .box-top .active-content .active-action .action-label {
+    float: right;
+    height: 20px;
+    line-height: 20px;
+    margin-top: -1px;
+}
+#wrapper .box-top .active-content .active-action .action-label .rating,
+#wrapper .box-top .active-content .active-action .action-label .review {
+    display: inline-block;
+    padding-right: 10px;
+    color: #337ab7;
+}
+
+
+#wrapper #container .well {
+    padding: 5px;
+    margin-top: 65px;
+}
+#wrapper #container .well h3 {
+    text-align: center;
+    color: #777777;
+    margin-top: 10px;
+}
+#wrapper #container .well .category {
+    padding-bottom: 10px;
+    text-align: center;
+}
+#wrapper #container .well .category .category-button {
+    // display: inline-block;
+    color: #343434;
+    background-color: #e1df19;
+    font-size: 17px;
+    font-weight: bold;
+    position: relative;
+    padding: 3px 5px 3px 7px;
+    box-shadow: 3px 4px 6px rgba(0, 0, 0, 0.2);
+    margin-left: 15px;
+}
+#wrapper #container .well .category .category-button:after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    border: solid transparent;
+    border-right-color: #e1df19;
+    border-width: 12px;
+    top: 0;
+    left: -23px;    
 }
 /*======================================================
                 END
