@@ -1,37 +1,38 @@
 <!-- Slider -->
 <section id="sec-slider" style="margin-top: -25px;">
-    <div id="jssor_1" class="slider-jssor">
-        <div class="js-slider" data-u="slides" >
-            <div data-p="225.00" style="display: none;">
-                <%= image_tag "sliders/slider-01.jpg", alt: "logo" %>
-            </div>
-            <div data-p="225.00" style="display: none;">
-                <%= image_tag "sliders/slider-02.jpg", alt: "logo" %>
-            </div>
-            <div data-p="225.00" style="display: none;">
-                <%= image_tag "sliders/slider-03.jpg", alt: "logo" %>
-            </div>
-        </div>
-                <!-- caption -->
-        <div class="slider-text-center">
-            <div class="center">
-                <div class="slider-logo">
-                    <%= image_tag "tdrlogo2.png", alt: "logo",
-                        class: "wow zoomIn" %>
-                </div>
-                <div class="slider-caption">
-                    <div class="big-caption wow zoomIn" data-wow-delay="1s">
-                    Travel Destination Review
-                    </div>
-                    <p class="wow zoomIn" data-wow-delay="1.4s">Trustworthy ● Delightful ● Refreshing</p>
-                </div>
-            </div>
-        </div>
-                <!-- navigator -->
-        <div data-u="navigator" class="jssorb05" data-autocenter="1">
-            <div data-u="prototype"></div>
-        </div>
+  <div id="jssor_1" class="slider-jssor">
+    <div class="js-slider" data-u="slides" >
+      <div data-p="225.00" style="display: none;">
+            <%= image_tag "sliders/slider-01.jpg", alt: "logo" %>
+      </div>
+      <div data-p="225.00" style="display: none;">
+        <%= image_tag "sliders/slider-02.jpg", alt: "logo" %>
+      </div>
+      <div data-p="225.00" style="display: none;">
+        <%= image_tag "sliders/slider-03.jpg", alt: "logo" %>
+      </div>
     </div>
+            <!-- caption -->
+    <div class="slider-text-center">
+      <div class="center">
+        <div class="slider-logo">
+          <%= image_tag "tdrlogo2.png", alt: "logo",
+            class: "wow zoomIn" %>
+        </div>
+        <div class="slider-caption">
+          <div class="big-caption wow zoomIn" data-wow-delay="1s">
+            Travel Destination Review
+          </div>
+          <p class="wow zoomIn" data-wow-delay="1.4s">
+            Trustworthy ● Delightful ● Refreshing</p>
+        </div>
+      </div>
+    </div>
+            <!-- navigator -->
+    <div data-u="navigator" class="jssorb05" data-autocenter="1">
+      <div data-u="prototype"></div>
+    </div>
+  </div>
 </section>
 <!-- ./Slider -->
 
@@ -48,8 +49,9 @@
     <div class="container">
         <div class="list-travel">
             <div class="owl-carousel owl-client">
+            <% @locations.each do |location| %>
                 <div class="item">
-                    <div class="card" style="background: url(<%= asset_path 'list/list1.jpg' %>) center center / cover">
+                    <div class="card" style="background: url(<%= location.picture.url %>) center center / cover">
                         <div class="header">
                             <div class="category">
                                 <h6 class="label label-danger">Hot</h6>
@@ -58,149 +60,15 @@
 
                         <div class="content">
                             <h4 class="title title-uppercase">
-                                <a href="">Du lịch Hà Nội</a>
+                              <%= link_to location.name,
+                                location_path(location) %>
                             </h4>
-                            <p class="description">Hà Nội có rất nhiều con phố có đẹp như PHỐ VỌNG, TRẦN DUY HƯNG.</p>
+                            <p class="description"><%= location.introduction %></p>
                         </div>
                         <div class="filter"></div>
                     </div> <!-- end card -->
                 </div>
-                <div class="item">
-                    <div class="card" style="background: url(<%= asset_path 'list/list5.jpg' %>) center center / cover">
-                        <div class="header">
-                            <div class="category">
-                                <h6 class="label label-danger">Hot</h6>
-                            </div>
-                        </div>
-
-                        <div class="content">
-                            <h4 class="title title-uppercase">
-                                <a href="">Du Lịch Phong Nha</a>
-                            </h4>
-                            <p class="description">PHong Nha là một trong những CAVE được ghi nhận là di sản cấp thế giới.</p>
-                        </div>
-                        <div class="filter"></div>
-                    </div> <!-- end card -->
-                </div>
-                <div class="item">
-                    <div class="card" style="background: url(<%= asset_path 'list/list2.jpg' %>) center center / cover">
-                        <div class="header">
-                            <div class="category">
-                                <h6 class="label label-danger">Hot</h6>
-                            </div>
-                        </div>
-
-                        <div class="content">
-                            <h4 class="title title-uppercase">
-                                <a href="">Du lịch Hà Nội</a>
-                            </h4>
-                            <p class="description">Hà Nội có rất nhiều con phố có đẹp như PHỐ VỌNG, TRẦN DUY HƯNG.</p>
-                        </div>
-                        <div class="filter"></div>
-                    </div> <!-- end card -->
-                </div>
-                <div class="item">
-                    <div class="card" style="background: url(<%= asset_path 'list/list3.jpg' %>) center center / cover">
-                        <div class="header">
-                            <div class="category">
-                                <h6 class="label label-danger">Hot</h6>
-                            </div>
-                        </div>
-
-                        <div class="content">
-                            <h4 class="title title-uppercase">
-                                <a href="">Du lịch Hà Nội</a>
-                            </h4>
-                            <p class="description">Hà Nội có rất nhiều con phố có đẹp như PHỐ VỌNG, TRẦN DUY HƯNG.</p>
-                        </div>
-                        <div class="filter"></div>
-                    </div> <!-- end card -->
-                </div>
-                <div class="item">
-                    <div class="card" style="background: url(<%= asset_path 'list/list4.jpg' %>) center center / cover">
-                        <div class="header">
-                            <div class="category">
-                                <h6 class="label label-danger">Hot</h6>
-                            </div>
-                        </div>
-
-                        <div class="content">
-                            <h4 class="title title-uppercase">
-                                <a href="">Du lịch Hà Nội</a>
-                            </h4>
-                            <p class="description">Hà Nội có rất nhiều con phố có đẹp như PHỐ VỌNG, TRẦN DUY HƯNG.</p>
-                        </div>
-                        <div class="filter"></div>
-                    </div> <!-- end card -->
-                </div>
-                <div class="item">
-                    <div class="card" style="background: url(<%= asset_path 'list/list7.jpg' %>) center center / cover">
-                        <div class="header">
-                            <div class="category">
-                                <h6 class="label label-danger">Hot</h6>
-                            </div>
-                        </div>
-
-                        <div class="content">
-                            <h4 class="title title-uppercase">
-                                <a href="">Du Lịch Phong Nha</a>
-                            </h4>
-                            <p class="description">PHong Nha là một trong những CAVE được ghi nhận là di sản cấp thế giới.</p>
-                        </div>
-                        <div class="filter"></div>
-                    </div> <!-- end card -->
-                </div>
-                <div class="item">
-                    <div class="card" style="background: url(<%= asset_path 'list/list5.jpg' %>) center center / cover">
-                        <div class="header">
-                            <div class="category">
-                                <h6 class="label label-danger">Hot</h6>
-                            </div>
-                        </div>
-
-                        <div class="content">
-                            <h4 class="title title-uppercase">
-                                <a href="">Du lịch Hà Nội</a>
-                            </h4>
-                            <p class="description">Hà Nội có rất nhiều con phố có đẹp như PHỐ VỌNG, TRẦN DUY HƯNG.</p>
-                        </div>
-                        <div class="filter"></div>
-                    </div> <!-- end card -->
-                </div>
-                <div class="item">
-                    <div class="card" style="background: url(<%= asset_path 'list/list6.jpg' %>) center center / cover">
-                        <div class="header">
-                            <div class="category">
-                                <h6 class="label label-danger">Hot</h6>
-                            </div>
-                        </div>
-
-                        <div class="content">
-                            <h4 class="title title-uppercase">
-                                <a href="">Du lịch Hà Nội</a>
-                            </h4>
-                            <p class="description">Hà Nội có rất nhiều con phố có đẹp như PHỐ VỌNG, TRẦN DUY HƯNG.</p>
-                        </div>
-                        <div class="filter"></div>
-                    </div> <!-- end card -->
-                </div>
-                <div class="item">
-                    <div class="card" style="background: url(<%= asset_path 'list/list7.jpg' %>) center center / cover">
-                        <div class="header">
-                            <div class="category">
-                                <h6 class="label label-danger">Hot</h6>
-                            </div>
-                        </div>
-
-                        <div class="content">
-                            <h4 class="title title-uppercase">
-                                <a href="">Du lịch Hà Nội</a>
-                            </h4>
-                            <p class="description">Hà Nội có rất nhiều con phố có đẹp như PHỐ VỌNG, TRẦN DUY HƯNG.</p>
-                        </div>
-                        <div class="filter"></div>
-                    </div> <!-- end card -->
-                </div>
+            <% end %>
             </div>
         </div>
     </div>
@@ -221,54 +89,52 @@
         <div class="list-travel">
             <div class="card-box col-md-4 col-sm-6">
                 <div class="card">
-                    <div class="header" style="background: url(<%= asset_path 'list/list7.jpg' %>) center center /cover">
+                    <div class="header" style="background: url(<%= @lastloc.picture.url %>) center center /cover">
                         <div class="filter"></div>
                     </div>
                     <div class="content">
                         <h6 class="category">News</h6>
-                        <h4 class="title"><a href="#">Đà Lạt thành phố mộng mơ</a></h4>
-                        <p class="description">Đà Lạt xứ sở ngàn hoa rực rỡ sắc màu.</p>
+                        <h4 class="title">
+                          <%= link_to @lastloc.name, location_path(@lastloc) %>
+                        </h4>
+                        <p class="description">
+                          <%= @lastloc.introduction %>
+                        </p>
                     </div>
                 </div> <!-- end card -->
             </div>
             <div class="card-box col-md-4 col-sm-6">
                 <div class="card">
-                    <div class="header" style="background: url(<%= asset_path 'list/list4.jpg' %>) center center /cover">
+                    <div class="header" style="background: url(<%= @slastloc.picture.url %>) center center /cover">
                         <div class="filter"></div>
                     </div>
                     <div class="content">
                         <h6 class="category">News</h6>
-                        <h4 class="title"><a href="#">Du lịch Hạ Long</a></h4>
-                        <p class="description">Hạ Long là vịnh đẹp nhất thế giới.</p>
+                        <h4 class="title">
+                          <%= link_to @slastloc.name, location_path(@slastloc) %>
+                        </h4>
+                        <p class="description">
+                          <%= @slastloc.introduction %>
+                        </p>
                     </div>
                 </div> <!-- end card -->
             </div>
             <div class="card-box col-md-4 col-sm-6">
                 <div class="card">
-                    <div class="header" style="background: url(<%= asset_path 'list/list2.jpg' %>) center center /cover">
+                    <div class="header" style="background: url(<%= @tlastloc.picture.url %>) center center /cover">
                         <div class="filter"></div>
                     </div>
                     <div class="content">
                         <h6 class="category">News</h6>
-                        <h4 class="title"><a href="">Du lịch Hà Nội</a></h4>
-                        <p class="description">Hà Nội có rất nhiều con phố có đẹp như PHỐ VỌNG, TRẦN DUY HƯNG.</p>
+                        <h4 class="title">
+                          <%= link_to @tlastloc.name, location_path(@tlastloc) %>
+                        </h4>
+                        <p class="description">
+                          <%= @tlastloc.introduction %>
+                        </p>
                     </div>
                 </div> <!-- end card -->
             </div>
-
-            <div class="card-box col-md-4 col-sm-6">
-                <div class="card">
-                    <div class="header" style="background: url(<%= asset_path 'list/list5.jpg' %>) center center /cover">
-                        <div class="filter"></div>
-                    </div>
-                    <div class="content">
-                        <h6 class="category">News</h6>
-                        <h4 class="title"><a href="">Du Lịch Phong Nha</a></h4>
-                        <p class="description">PHong Nha là một trong những CAVE được ghi nhận là di sản cấp thế giới.</p>
-                    </div>
-                </div> <!-- end card -->
-            </div>
-
         </div>
     </div>
 </section>
