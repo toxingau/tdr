@@ -3,23 +3,27 @@
   <div class="margin-top">
     <div class="row">
       <div class="col-md-7">
-        <div id="loca-slider" style="position: relative; width: 600px; height: 450px; overflow: hidden; visibility: hidden;">
-            <div data-u="slides" style="cursor: default; position: relative; width: 600px; height: 450px; overflow: hidden;">
+        <div id="loca-slider" style="position: relative; width: 600px;
+          height: 450px; overflow: hidden; visibility: hidden;">
+            <div data-u="slides" style="cursor: default; position: relative;
+              width: 600px; height: 450px; overflow: hidden;">
                 <div data-p="225.00" style="display: none;">
-                    <%= image_tag @location.picture.url, alt: t("locationalt"), class: "img-responsive img-thumbnail" %>
+                  <%= image_tag @location.picture.url, alt: t("locationalt"),
+                    class: "img-responsive img-thumbnail" %>
                 </div>
-                <div data-p="225.00" style="display: none;">
-                    <%= image_tag @location.picture.url, alt: t("locationalt"), class: "img-responsive img-thumbnail" %>
-                </div>
-                <div data-p="225.00" style="display: none;">
-                    <%= image_tag "sliders/slider-01.jpg", alt: "logo", class: "img-responsive img-thumbnail" %>
-                </div>
+                <% @location.images.each do |image| %>
+                  <div data-p="225.00" style="display: none;">
+                    <%= cl_image_tag image.img_url, alt: t("locationalt"),
+                      class: "img-responsive img-thumbnail" %>
+                  </div>
+                <% end %>
             </div>
             <!-- Arrow Navigator -->
-            <span data-u="arrowleft" class="jssora22l" style="top:165px;left:10px;width:50px;height:80px;" data-autocenter="2"></span>
-            <span data-u="arrowright" class="jssora22r" style="top:165px;right:10px;width:50px;height:80px;" data-autocenter="2"></span>
-        </div>
-        
+            <span data-u="arrowleft" class="jssora22l" style="top:165px;
+              left:10px;width:50px;height:80px;" data-autocenter="2"></span>
+            <span data-u="arrowright" class="jssora22r" style="top:165px;
+              right:10px;width:50px;height:80px;" data-autocenter="2"></span>
+        </div>       
       </div>  
     
       <div class="col-md-5">
@@ -61,13 +65,14 @@
     </div>
   </div>
   <div class ="row">
-    <div class="col-md-10 col-md-offset-1"> 
+    <div class="col-md-10 col-md-offset-1">
+      <h2>Review</h2>
       <div id="reviews_<%= location.id %>" class="review-comment">
-        <%= render location.reviews, location: @location if location.reviews.any? %>
+        <%= render location.reviews,
+          location: @location if location.reviews.any? %>
       </div>
     </div>
-  </div>
-  
+  </div> 
 </div>
 
 <script>
