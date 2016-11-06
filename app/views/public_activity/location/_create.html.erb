@@ -1,7 +1,7 @@
 <li>
   <% if a.trackable %>
     <%= render "shared/activity_owner", a: a %> created location
-    <%= link_to a.trackable.name, admin_location_path(a.trackable) %>
+    <%= link_to a.trackable.name, location_path(a.trackable) %>
     <%= time_ago_in_words activity.created_at %> <%= t :ago %>
   <% else %>
    A location that is currently deleted was added.

@@ -5,6 +5,7 @@ class LocationsController < ApplicationController
     @search = Location.search(params[:q])
     @locations = @search.result
     @search.build_condition
+    @categories = Category.all
   end
 
   def show
