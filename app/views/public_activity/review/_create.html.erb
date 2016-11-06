@@ -1,7 +1,7 @@
-<li>
+<li class="list-group-item list-group-item-success">
   <% if a.trackable %>
     <%= render "shared/activity_owner", a: a %> reviewed about
-    <%= link_to a.trackable.location.name, admin_location_path(a.trackable) %>
+    <%= link_to a.trackable.location.name, location_path(a.trackable) %>
     <%= time_ago_in_words activity.created_at %> <%= t :ago %>
   <% else %>
     A review that is currently deleted was added.
