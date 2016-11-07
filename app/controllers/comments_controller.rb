@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.build comment_params
     @comment.save
     respond_to do |format|
-      format.html {redirect_to review_path}
+      format.html {redirect_to review_path(@comment.review)}
       format.js
     end
   end
@@ -24,6 +24,7 @@ class CommentsController < ApplicationController
   def update
     if @comment.update_attributes comment_params
       flash[:success] = t :commentupdated
+      redirect_to review_path(@comment.review)
     else
       render :edit
     end

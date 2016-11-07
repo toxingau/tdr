@@ -29,7 +29,7 @@ class Location < ApplicationRecord
   private
   def picture_size
     if picture.size > 5.megabytes
-      errors.add :picture, t(:picturesize)
+      errors.add :picture, I18n.t(:picturesize)
     end
   end
 end

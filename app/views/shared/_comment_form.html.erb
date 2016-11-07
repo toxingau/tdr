@@ -5,8 +5,8 @@
       <%= f.text_area :content, rows: 3, placeholder: t(:addcomment), class: "form-control form-margin",
         id: "comment_content_#{review.id}" %>
     </div>
-    <div class="col-md-2">
-      <%= f.submit t(:submitcomment), class: "btn btn-primary" %>
+    <div class="col-md-2" style="margin-top: 40px;">
+      <%= f.submit t(:submitcomment), class: "btn btn-primary"%>
     </div>
   </div>
 <% end %>
