@@ -24,7 +24,6 @@ class CommentsController < ApplicationController
   def update
     if @comment.update_attributes comment_params
       flash[:success] = t :commentupdated
-      redirect_to review_path
     else
       render :edit
     end
