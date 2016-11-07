@@ -1,82 +1,85 @@
 <% provide :title, t(:alllocation) %>
 
 <div id="wrapper">
-  <div id="container" class="container-fluid">
-    <div class="post-detail all-post row col-md-8">
-      <div class="col-md-9 col-lg-9 post-left" 
-        style="margin-top: 20px;margin-left: 100px;"> 
+  <div id="container" class="container">
+    <div class="row">
+      <div class="post-detail all-post col-md-9">
         <div class="box-title box-title-child">
-          <div class="col-sm-6 col-sm-offset-3">
-          <div class="clearfix"></div>
-          <ul class="list-title text-center" id="posts_tablist">
-            <span role="presentation"> ⚬
-              <%= link_to t(:post), "#" %>              
-            </span>  ⚬
-          </ul>
-        </div>
+          <div class="presentation">
+            ⚬ <%= link_to t(:post), "#" %> ⚬
+          </div>
         
-        <div class="row blog-post post-list">
-          <% @locations.each do |location| %>
-            <div class="thumbnail box-top">
-              <div class="row clickable-row" data-href="<%= location_path location %>">
-                <div class="col-md-5">
-                  <%= image_tag location.picture.url, alt: t("locationalt"), class:
-                  "img-responsive img-thumbnail", width: 300, height: 200 %>
-                </div>
-                <div class="caption col-md-7">
-                  <div class="item-info">
-                    <h3 class="clickable-row" data-href="<%= location_path location %>">
-                      <%= link_to location.name, location_path(location) %>
-                    </h3>
-                    <h6>Systems created about ⚬ <%= location.created_at.strftime t(:timetype) %></h6>
-                    <h4 class="clickable-row" data-href="<%= location_path location %>">
-                      <%= location.introduction %>
-                    </h4>
-                    <% if user_signed_in? %>
-                      <td class="button" data-href="<%= location_path location %>">
-                        <%= link_to location.category.name, category_path(location.category), class: "btn btn-warning" %>
-                      </td>
-                      <span class="col-md-offset-7">
-                        <td class="clickable-row" data-href="<%= location_path location %>">
-                          <%= link_to t(:Review), location_path(location), class: "btn btn-primary" %>
-                        </td>
-                      </span>
-                    <% end %>
+          <div class="row blog-post post-list">
+            <% @locations.each do |location| %>
+              <div class="col-md-6 col-sm-6">
+                <div class="box-top">
+                  <div class="row" data-href="<%= location_path location %>">
+                    <div class="active-content">
+                      <div class="attribution">
+                        <div class="content">
+                          <div class="name" data-href="<%= location_path location %>">
+                            <%= link_to location.name, location_path(location) %>
+                          </div>
+                          <div class="date">
+                            Created at ⚬ <%= location.created_at.strftime t(:timetype) %>
+                          </div>
+                        </div>
+                        <% if user_signed_in? %>
+                          <div class="category">
+                            <%= link_to location.category.name, category_path(location.category), class: "category-button" %>
+                          </div>
+                        <% end %>
+                      </div>
+                    </div>
+                    <div class="active-photo">
+                      <%= image_tag location.picture.url, alt: t("locationalt") %>
+                    </div>
+                    <div class="active-content">
+                      <div class="introduction">
+                        <p data-href="<%= location_path location %>"><%= location.introduction %></p>
+                      </div>
+                      <div class="active-action">
+                        <% if user_signed_in? %>
+                            <div class="button-review" data-href="<%= location_path location %>">
+                              <%= link_to t(:Review), location_path(location), class: "btn btn-primary" %>
+                            </div>
+                        <% end %>
+                        <div class="action-label">
+                          <div class="rating">
+                            <i class="glyphicon glyphicon-heart-empty"></i>&nbsp;<%= location.rating %>
+                          </div>
+                          <div class="review">
+                            <i class="glyphicon glyphicon-pencil"></i>&nbsp;<%= location.reviews.count %>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="mini-post-list col-md-offset-0">
-                <td class="clickable-row" data-href="<%= location_path location %>">
-                  <i class="glyphicon glyphicon-heart-empty"></i>&nbsp;
-                  <%= location.rating %>
-                </td> ⚬
-                <span id="review_count">
-                  <i class="glyphicon glyphicon-pencil"></i>&nbsp;
-                  <%= location.reviews.count %>
-                </span>
-              </div>
-            </div>
-          <% end %>
-        </div>  
+            <% end %>
+          </div> 
+        </div>
       </div>
-    </div>    
-  </div>
-
-  <div class="col-md-4 well" style="margin-top: 20px;">
-    <div class="search-form">
-      <h2>Search</h2>
-      <%= search_form_for @search, class: "form-inline" do |f| %>
-        <%= f.condition_fields do |c| %>
-          <%= render "condition_fields", f: c%>
-        <% end %>
-      <% end %>
-    </div>
-    <div>
-      <h2>Categories</h2>
-      <% @categories.each do |category| %>
-        <%= link_to category.name, category_path(category),
-          class: "btn btn-warning" %>
-      <% end %>
+  
+      <div class="col-md-3 well">
+        <div class="search-form">
+          <h3>Search</h3>
+          <%= search_form_for @search, class: "form-inline" do |f| %>
+            <%= f.condition_fields do |c| %>
+              <%= render "condition_fields", f: c%>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="list-category">
+          <h3>Categories</h3>
+          <div class="category">
+            <% @categories.each do |category| %>
+                <%= link_to category.name, category_path(category), class: "category-button" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
