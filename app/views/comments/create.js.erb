@@ -4,5 +4,6 @@
   $("#comment_<%= @comment.review_id %>").append("<%= j render "comments/comment", comment: @comment %>");
   $("#comment_content_<%= @comment.review_id %>").val("")
 <% else %>
+  alert("The comment is too long (maximum is 1000 characters)");
   $("#error_messages").append("<%= j render "shared/error_messages", object: @comment %>");
 <% end %>

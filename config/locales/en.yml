@@ -53,9 +53,10 @@ en:
     locations: "Locations"
   flash:
     fail: "Update fail!"
-    record_not_found: "Not found"
+    record_not_found: "Record Not found"
   location:
     list: "List Location"
     location: "Location"
     action: "Action"
   error: "Fail to create review"
+  locationupdated: "Location Updated"

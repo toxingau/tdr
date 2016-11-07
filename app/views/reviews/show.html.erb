@@ -1,3 +1,6 @@
+<div>
+  <h2><%= @review.location.name %><h2>
+</div>
 <div class ="container">
   <%= render @review %>
 </div>
@@ -15,9 +18,8 @@
       </div>
     <% end %>
     <div id="error_messages"></div>
-
-    <div id="comment_<%= @review.id %>">
-      <%= render @review.comments, review: @review if @review.comments.any? %>
-    </div>
   </div>
+</div>
+<div class="text-center">
+  <%= link_to "Back", :back, class: "btn btn-success" %>
 </div>
