@@ -53,7 +53,7 @@ en:
     locations: "Locations"
   flash:
     fail: "Update fail!"
-    record_not_found: "Not found"
+    record_not_found: "Record Not found"
   location:
     list: "List Location"
     location: "Location"
