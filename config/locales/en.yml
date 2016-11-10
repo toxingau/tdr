@@ -60,3 +60,6 @@ en:
     action: "Action"
   error: "Fail to create review"
   locationupdated: "Location Updated"
+  review:
+    create_success: "Create Review Success"
+    update_success: "Update Review Success" 

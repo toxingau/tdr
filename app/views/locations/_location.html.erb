@@ -40,11 +40,7 @@
           <div class="loca-content" style="font-style: italic;">
             <div class="row">
               <div class="col-sm-6">
-                <span class="title">Rating:</span> <%= @location.rating %> 
-                <% if user_signed_in? %>
-                  <%= rating_for @location, "service", star: 5,
-                    enable_half: true, disable_after_rate: false %>
-                <% end %>
+                <span class="title">Rating:</span> <%= @location.rate_avg %> 
               </div>
               <div class="col-sm-6">
                   <span class="title">Reviews:</span>
@@ -56,23 +52,26 @@
         <div class="map">
           <%= image_tag "http://maps.google.com/maps/api/staticmap?size=1450x300&sensor=false&zoom=16&markers=#{@location.latitude}%2C#{@location.longitude}", class: "img-rounded" %>
         </div>
-        <% if user_signed_in? %>
-          <div class="review">
-            <%= render "shared/review_form", location: @location %>
-          </div>
-        <% end %>
       </div>       
     </div>
   </div>
+  <hr>
   <div class ="row">
-    <div class="col-md-10 col-md-offset-1">
-      <h2>Review</h2>
+    <div class="col-md-5">
+      <div class="review">
+        <% if user_signed_in? %>
+          <%= render "shared/review_form", location: @location %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <h2>List Review</h2>
       <div id="reviews_<%= location.id %>" class="review-comment">
         <%= render location.reviews,
           location: @location if location.reviews.any? %>
       </div>
-    </div>
-  </div> 
+    </div>      
+  </div>
 </div>
 
 <script>

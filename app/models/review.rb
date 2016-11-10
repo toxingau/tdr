@@ -15,4 +15,5 @@ class Review < ApplicationRecord
   validates :location_id, presence: true
   validates :user_id, presence: true
   validates :content, presence: true, length: {maximum: 1000}
+  validates :ratting, presence: true
 end

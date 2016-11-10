@@ -1,14 +1,17 @@
-<%= form_for @review, remote: true do |f| %>
+<%= form_for @review do |f| %>
   <div class="form-review">
     <div class="row">
-      <div class="col-md-10">
-        <%= f.hidden_field :location_id, value: location.id %>
-        <%= f.text_area :content, rows: 3, placeholder: t(:addreview), class: "form-control form-margin",
+      <%= f.hidden_field :location_id, value: location.id %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :rating, value: 0 %>
+
+      <div id="rating-form">
+        <label>Rating: </label>
+      </div>
+      
+      <%= f.text_area :content, rows: 7, placeholder: t(:addreview), class: "form-control form-margin",
           id: "review_content_#{location.id}" %>
-      </div>
-      <div class="col-md-2">
-        <%= f.submit t(:submitreview), class: "btn btn-primary" %>
-      </div>
+      <%= f.submit t(:submitreview), class: "btn btn-primary" %>
     </div>
   </div>
 <% end %>

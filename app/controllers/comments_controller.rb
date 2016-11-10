@@ -5,12 +5,13 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.build comment_params
     @comment.save
     respond_to do |format|
-      format.html {redirect_to review_path(@comment.review)}
+      format.html {redirect_to review_path}
       format.js
     end
   end
 
   def destroy
+    @comment = Comment.find(params[:id])
     @comment.destroy
     respond_to do |format|
       format.html {redirect_to review_path}
@@ -19,12 +20,14 @@ class CommentsController < ApplicationController
   end
 
   def edit
+    respond_to do |format|
+      format.js
+    end
   end
 
   def update
     if @comment.update_attributes comment_params
       flash[:success] = t :commentupdated
-      redirect_to review_path(@comment.review)
     else
       render :edit
     end
