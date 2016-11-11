@@ -66,9 +66,9 @@
         <div class="search-form">
           <h3>Search</h3>
           <%= search_form_for @search, class: "form-inline" do |f| %>
-            <%= f.condition_fields do |c| %>
-              <%= render "condition_fields", f: c%>
-            <% end %>
+            <%= f.label :name_cont, "Location" %>
+            <%= f.search_field :name_cont %>
+            <%= f.submit %>
           <% end %>
         </div>
         <div class="list-category">

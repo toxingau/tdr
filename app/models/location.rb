@@ -1,6 +1,7 @@
 class Location < ApplicationRecord
   include PublicActivity::Model
-  tracked owner: ->controller, model{controller && controller.current_user}
+  tracked only: [:create, :destroy],
+    owner: ->controller, model{controller && controller.current_user}
 
   ratyrate_rateable "service"
 
