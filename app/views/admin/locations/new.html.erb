@@ -1,3 +1,9 @@
 <% provide :title, t("createlocation") %>
 <h1><%= t :createlocation %></h1>
-<%= render "location_form" %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= render "location_form" %>
+    <%= link_to "New Image", new_admin_image_path,
+      class: "btn btn-primary", id:"form-btn" %>
+  </div>
+</div>

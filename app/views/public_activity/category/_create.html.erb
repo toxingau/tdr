@@ -1,4 +1,4 @@
-<li>
+<li class="list-group-item list-group-item-success">
   <% if a.trackable %>
     <%= render "shared/activity_owner", a: a %> created category
     <%= link_to a.trackable.name, admin_category_path(a.trackable) %>
