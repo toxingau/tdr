@@ -4,7 +4,9 @@
       <div class="review-content">
         <div class="review-name">
           <%= link_to review.user.name, review.user %>
-          <span class="content"><%= review.content %></span>
+          <div class="review-rating" data-score="<%= review.rating %>"></div>
+          <h6>Review's Content:</h6>
+          <div class="content"><%= review.content %></div>
         </div>
       </div>
       <div class="review-votes">
@@ -18,15 +20,10 @@
       <div class="pull-right">
         <% if can? :manage, review %>
           <div class="review-action">
-            <%= link_to edit_review_path(review), review: review, 
-              remote: true do %>
-              <i class="glyphicon glyphicon-edit"></i>&nbsp;
-            <% end %>
-    
-            <%= link_to review, method: :delete, data: {confirm: t("confirm_rv")},
-             remote: true do %>
-              <i class="glyphicon glyphicon-remove"></i>&nbsp;
-            <% end %>
+            <%= link_to "", edit_review_path(review),
+              class: "glyphicon glyphicon-edit" %>
+            <%= link_to "", review_path(review), method: :delete,
+              data: {confirm: t("confirm_rv")}, class: "glyphicon glyphicon-remove" %>
           </div>
         <% end %>
       </div>

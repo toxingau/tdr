@@ -3,7 +3,7 @@ class CreateLocations < ActiveRecord::Migration[5.0]
     create_table :locations do |t|
       t.text :name
       t.text :introduction
-      t.float :rating, default: 0
+      t.float :rate_avg, default: 0
       t.references :category, index: true, foreign_key: true
       t.string :picture
       t.string :address

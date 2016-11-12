@@ -4,6 +4,10 @@ class ReviewsController < ApplicationController
   def create
     @review = current_user.reviews.build review_params
     if @review.save
+      location = @review.location
+      location.rate_avg = location.reviews.average(:rating)
+      location.save
+      flash[:success] = t "review.create_success"
       redirect_to @review.location
     else
       flash[:alert] = t :error
@@ -19,10 +23,12 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    @review.update_attributes review_params
-    respond_to do |format|
-      format.html {redirect_to @review.location}
-      format.js
+    if @review.update_attributes review_params
+      flash[:success] = t "review.update_success"
+      redirect_to @review.location
+      location = @review.location
+      location.rate_avg = location.reviews.average(:rating).round(2)
+      location.save
     end
   end
 
@@ -34,6 +40,7 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit :content, :location_id
+    params.require(:review).permit :user_id, :content, :location_id,
+      :rating
   end
 end

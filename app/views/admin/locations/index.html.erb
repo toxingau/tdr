@@ -36,7 +36,7 @@
             <td><%= link_to location.name, location_path(location) %></td>
             <td><%= link_to location.category.name,
               admin_category_path(location.category) %></td>
-            <td><%= location.rating %></td>
+            <td><%= location.rate_avg %></td>
             <td><%= location.introduction %></td>
             <td>
               <%= link_to t(:editlocation), edit_admin_location_path(location),
