@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   load_and_authorize_resource
+  after_action :update_rating, only: [:create, :update, :destroy]
 
   def create
     @review = current_user.reviews.build review_params
@@ -42,5 +43,10 @@ class ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit :user_id, :content, :location_id,
       :rating
+  end
+
+  def update_rating
+    @review.location[:rate_avg] = @review.location.rating
+    @review.location.save
   end
 end

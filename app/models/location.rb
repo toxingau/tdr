@@ -22,6 +22,8 @@ class Location < ApplicationRecord
     order("rate_avg DESC").limit(5)
   end
 
+  before_save :update_rating
+
   UNRANSACKABLE_ATTRIBUTES = ["id", "updated_at", "created_at", "introduction", "picture", "address", "latitude", "longitude"]
 
   def self.ransackable_attributes auth_object = nil
@@ -35,10 +37,18 @@ class Location < ApplicationRecord
     end
   end
 
+  def rating
+    self.reviews.count > 0 ? self.reviews.average(:rating) : 0
+  end
+
   private
   def picture_size
     if picture.size > 5.megabytes
       errors.add :picture, I18n.t(:picturesize)
     end
+  end
+
+  def update_rating
+    self[:rate_avg] = rating
   end
 end

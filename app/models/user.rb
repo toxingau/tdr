@@ -23,6 +23,11 @@ class User < ApplicationRecord
   validates_processing_of :avatar
 
   enum role:{user: 0, admin: 1}
+
+  def review_location? location_id
+    reviews.find_by location_id: location_id
+  end
+
   
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

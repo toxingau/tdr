@@ -60,7 +60,9 @@
     <div class="col-md-5">
       <div class="review">
         <% if user_signed_in? %>
-          <%= render "shared/review_form", location: @location %>
+          <% unless current_user.review_location?(location.id).present? %>
+            <%= render "shared/review_form", location: @location %>
+          <% end %>
         <% end %>
       </div>
     </div>
