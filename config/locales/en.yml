@@ -58,7 +58,7 @@ en:
     list: "List Location"
     location: "Location"
     action: "Action"
-  error: "Fail to create review"
+  error: "Please add your review and rating"
   locationupdated: "Location Updated"
   review:
     validate_rating: "Error Validate"
