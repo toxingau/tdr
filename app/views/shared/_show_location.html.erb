@@ -23,12 +23,11 @@
       </div>
     </div>
     <div class="mini-post-list col-md-offset-0">
-      <td class="clickable-row" data-href="<%= location_path location %>"> Rating: 
-        <%= location.rate_avg %>
+      <td class="clickable-row" data-href="<%= location_path location %>"> 
+      <i class="glyphicon glyphicon-heart-empty"></i>&nbsp;<%= location.rate_avg.round(2) %>
       </td> ⚬
       <span id="review_count">
-        <%= location.reviews.count %>
-        <%= t :reviews %>
+        <i class="glyphicon glyphicon-pencil"></i>&nbsp;<%= location.reviews.count %>
       </span>
     </div>
   </div>

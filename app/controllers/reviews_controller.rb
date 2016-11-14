@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
     @review = current_user.reviews.build review_params
     if @review.save
       location = @review.location
-      location.rate_avg = location.reviews.average(:rating)
+      location.rate_avg = location.reviews.average(:rating).round(2)
       location.save
       flash[:success] = t "review.create_success"
       redirect_to @review.location
