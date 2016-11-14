@@ -46,7 +46,7 @@
                         <% end %>
                         <div class="action-label">
                           <div class="rating">
-                            <i class="glyphicon glyphicon-heart-empty"></i>&nbsp;<%= location.rate_avg %>
+                            <i class="glyphicon glyphicon-heart-empty"></i>&nbsp;<%= location.rate_avg.round(2) %>
                           </div>
                           <div class="review">
                             <i class="glyphicon glyphicon-pencil"></i>&nbsp;<%= location.reviews.count %>
