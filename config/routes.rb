@@ -4,12 +4,19 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   root "static_pages#home"
 
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+
   resources :users, only: [:index, :show]
   resources :locations, only: [:index, :show]
   resources :reviews
   resources :comments
   resources :votes, only: [:create, :destroy]
   resources :categories, only: :show
+  resources :relationships, only: [:create, :destroy]
   namespace :admin do
     root "static_pages#home"
     resources :locations
