@@ -4,7 +4,7 @@ User.create!(name: "Admin",
   password_confirmation: "123456",
   role: 1)
 
-5.times do |n|
+15.times do |n|
   name = Faker::Name.name
   email = "clone#{n+1}@gmail.com"
   password = "123456"
@@ -26,3 +26,9 @@ end
     introduction: introduction, picture: picture, address: name
 end
 PublicActivity.enabled = true
+users = User.all
+user  = users.second
+following = users[2..13]
+followers = users[3..10]
+following.each { |followed| user.follow(followed) }
+followers.each { |follower| follower.follow(user) }

@@ -18,6 +18,7 @@ class Ability
         can :manage, Review, user_id: user.id
         can :manage, Comment, user_id: user.id
         can :read, Category, user_id: user.id
+        can [:following, :followers], User
       end
     end
   end
