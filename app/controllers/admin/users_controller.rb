@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
 
   def index
     @search = User.search(params[:q])
-    @users = @search.result
+    @users = @search.result.page(params[:page]).per_page(5)
     @activities = PublicActivity::Activity.all.order(created_at: :desc)
   end
 

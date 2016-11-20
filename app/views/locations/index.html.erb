@@ -8,7 +8,7 @@
           <div class="presentation">
             ⚬ <%= link_to t(:post), "#" %> ⚬
           </div>
-        
+
           <div class="row blog-post post-list">
             <% @locations.each do |location| %>
               <div class="col-md-6 col-sm-6">
@@ -58,10 +58,11 @@
                 </div>
               </div>
             <% end %>
-          </div> 
+          </div>
+          <%= paginate @locations, theme: 'twitter-bootstrap-3' %>
         </div>
       </div>
-  
+
       <div class="col-md-3 well">
         <div class="search-form">
           <h3>Search</h3>
