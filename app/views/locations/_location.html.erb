@@ -57,7 +57,7 @@
   </div>
   <hr>
   <div class ="row">
-    <div class="col-md-5">
+    <div class="col-md-12">
       <div class="review">
         <% if user_signed_in? %>
           <% unless current_user.review_location?(location.id).present? %>
@@ -66,12 +66,12 @@
         <% end %>
       </div>
     </div>
-    <div class="col-md-7">
+    <div class="col-md-12">
       <h2>List Review</h2>
       <div id="reviews_<%= location.id %>" class="review-comment">
-        <%= render location.reviews,
-          location: @location if location.reviews.any? %>
+        <%= render @reviews if location.reviews.any? %>
       </div>
+      <%= paginate @reviews, theme: 'twitter-bootstrap-3' %>
     </div>      
   </div>
 </div>

@@ -1,9 +1,18 @@
 <div id="review_<%= review.id %>" class="comment-review">
   <div class="row review-all">
-    <div class="col-md-11">
+    <div class="col-md-2">
+      <%= cl_image_tag review.user.avatar_url(:thumbnail) %>
+      <br>
+      <div class="review-name" style="margin-top: 10px;">
+        <%= link_to review.user.name, review.user %>
+        <br>
+        <%= review.user.email %>
+      </div>
+    </div>
+    <div class="col-md-9">
       <div class="review-content">
         <div class="review-name">
-          <%= link_to review.user.name, review.user %>
+          <h6>User Rating:</h6>
           <div class="review-rating" data-score="<%= review.rating %>"></div>
           <h6>Review's Content:</h6>
           <div class="content"><%= review.content %></div>
@@ -13,7 +22,14 @@
         <div class="votes">
           <%= render "reviews/votes", review: review %>
         </div>
-        <div class="review-created"><%= review.created_at.strftime t(:timetype) %></div>
+        <div class="review-created">
+          <%= review.created_at.strftime t(:timetype) %>
+        </div>
+        <div class="clearfix"></div>
+        <div style="margin-top: 5px;">
+          <%= link_to (pluralize(review.comments.count, t("comments"))),
+            review_path(review), class: "btn btn-primary btn-sm" %>
+        </div>
       </div>
     </div>  
     <div class="col-md-1">
@@ -28,16 +44,5 @@
         <% end %>
       </div>
     </div>
-  </div>
-  <div class="clearfix"></div>
-  <div id="comment_<%= review.id %>" class="row">
-    <div class="col-md-10 col-md-offset-1">
-      <div class="reply-review">
-        <%= render review.comments, review: review if review.comments.any? %>
-      </div>
-    </div>
-  </div>
-  <div style="margin: 5px;">
-    <%= link_to t("comment_rv"), review_path(review), class: "btn btn-primary btn-sm" %>
   </div>
 </div>
