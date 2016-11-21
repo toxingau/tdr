@@ -3,7 +3,7 @@ class Admin::LocationsController < ApplicationController
 
   def index
     @search = Location.search(params[:q])
-    @locations = @search.result
+    @locations = @search.result.page(params[:page]).per_page(5)
     @search.build_condition
   end
 

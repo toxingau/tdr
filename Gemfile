@@ -30,6 +30,8 @@ gem 'jquery-turbolinks'
 gem "like_dislike"
 gem "public_activity"
 gem "geocoder"
+gem "kaminari"
+gem 'bootstrap-kaminari-views'
 
 group :development, :test do
   gem 'byebug', platform: :mri
