@@ -18,6 +18,7 @@ class ReviewsController < ApplicationController
 
   def show
     @comment = Comment.new
+    @comments = @review.comments.all.page(params[:page]).per_page(5)
   end
 
   def edit
