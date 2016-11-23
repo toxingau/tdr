@@ -3,8 +3,9 @@ class Admin::UsersController < ApplicationController
 
   def index
     @search = User.search(params[:q])
-    @users = @search.result.page(params[:page]).per_page(5)
+    @users = @search.result.page(params[:page]).per_page(10)
     @activities = PublicActivity::Activity.all.order(created_at: :desc)
+      .page(params[:page]).per_page(10)
   end
 
   def destroy

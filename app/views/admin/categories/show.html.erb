@@ -20,7 +20,7 @@
     <tbody>
       <% @locations.each do |location| %>
         <tr>
-          <td><%= link_to location.name, admin_location_path(location) %></td>
+          <td><%= link_to location.name, location_path(location) %></td>
           <td><%= location.created_at.strftime t "time_format" %></td>
           <td><%= location.updated_at.strftime t "time_format" %></td>
           <td>

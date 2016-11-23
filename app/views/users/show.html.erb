@@ -26,12 +26,11 @@
       <div class="activity-header">
         Activities
       </div>
-      
-        <ul class="list-group">
-          <%= @activities.blank? ? t("activities.nothing")
-            : render_activities(@activities) %>
-        </ul>
+      <ul class="list-group">
+        <%= @activities.blank? ? t("activities.nothing")
+          : render_activities(@activities) %>
+      </ul>
+      <%= paginate @activities, theme: "twitter-bootstrap-3" %>
     </div>
-
   </div>
 </div>

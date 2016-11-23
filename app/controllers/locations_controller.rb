@@ -10,7 +10,7 @@ class LocationsController < ApplicationController
   def show
     @location = Location.find_by_id params[:id]
     @review = Review.new
-    @reviews = @location.reviews.all.page(params[:page]).per_page(1)
+    @reviews = @location.reviews.all.page(params[:page]).per_page(3)
     @comment = Comment.new
   end
 end
