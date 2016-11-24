@@ -3,7 +3,7 @@ class Admin::CategoriesController < ApplicationController
 
   def index
     @search = Category.search(params[:q])
-    @categories = @search.result.page(params[:page]).per_page(2)
+    @categories = @search.result.page(params[:page]).per_page(10)
   end
 
   def show
